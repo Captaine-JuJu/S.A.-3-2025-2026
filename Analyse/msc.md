@@ -12,6 +12,8 @@ Liste de questions afin de clarifier les exigences :
 
 * Sous quel format les caractéristiques des différents produits sont donnée ?
 
+* Il  y a-t-il des fonctionnalités à développer en priorité ?
+
 
 | Objet                         | Acteur |                                 Action|
 |:------------------------:|:-------------------------------:|:--------------------------------------------------------------:|
@@ -26,6 +28,7 @@ Liste de questions afin de clarifier les exigences :
 | technicien                | administrateur web                                     | supprimer un technicien |
 | liste rebut               | administrateur web                      | consulter la liste du rebut/bloquer la liste du rebut |
 | journaux d'activité     | administrateur système                | consulter les différents journaux d’activités de la plateforme |
+
 
 
 
