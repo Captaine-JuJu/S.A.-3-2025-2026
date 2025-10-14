@@ -13,11 +13,13 @@ Quatre rôles sont à définir pour la gestion des droits de la plateforme pour 
 
 **Les fonctionnalités à développer sont :**
 
-**Pré-requis :**
-Connaissances requises :
-* Php
-* Administration Web
-* HTML/CSS
+A compléter
+
+**Pré-requis :** 
+
+Connaissances requises : 
+
+* Documentation du logiciel
 
 
 
@@ -28,8 +30,9 @@ Ressources matérielles et logicielles :
 * Système d'exploitation
 
 Compétences nécessaires :
-*
+* Aucune
 
 **Priorités :**
 
+La priorité est de produire un site web statique afin d'avoir un aperçu de l'interface de la platform.
 
