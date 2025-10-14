@@ -17,7 +17,7 @@ Quatre rôles sont à définir pour la gestion des droits de la plateforme pour 
 Connaissances requises :
 * Php
 * Administration Web
-* html/css
+* HTML/CSS
 
 
 
