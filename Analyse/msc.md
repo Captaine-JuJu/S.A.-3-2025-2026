@@ -14,7 +14,6 @@ Liste de questions afin de clarifier les exigences :
 
 * Il  y a-t-il des fonctionnalités à développer en priorité ?
 
-
 | Objet                         | Acteur |                                 Action|
 |:------------------------:|:-------------------------------:|:--------------------------------------------------------------:|
 | Inventaire               | utilisateur non-inscrit                     | consulter une partie de l'inventaire |
@@ -28,6 +27,7 @@ Liste de questions afin de clarifier les exigences :
 | technicien                | administrateur web                                     | supprimer un technicien |
 | liste rebut               | administrateur web                      | consulter la liste du rebut/bloquer la liste du rebut |
 | journaux d'activité     | administrateur système                | consulter les différents journaux d’activités de la plateforme |
+
 
 
 
