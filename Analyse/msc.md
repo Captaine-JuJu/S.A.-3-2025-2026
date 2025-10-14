@@ -13,8 +13,8 @@ Liste de questions afin de clarifier les exigences :
 * Sous quel format les caractéristiques des différents produits sont donnée ?
 
 
-| Objet |                         | Acteur |                                              | Action |
-| :-----------------------: | :-------------------------: | :-----------------------------------------------------------------: |
+|Objet|                         |Acteur|                                              |Action|
+|:-----------------------:|:-------------------------:|:-----------------------------------------------------------------:|
 | Inventaire               | utilisateur non-inscrit                     | consulter une partie de l'inventaire |
 | parc informatique             | technicien                                     | consulter le parc informatique |
 | liste                         | technicien                   | modifier une information dans la liste du parc informatique/exporter une liste en format csv |
@@ -26,6 +26,7 @@ Liste de questions afin de clarifier les exigences :
 | technicien                | administrateur web                                     | supprimer un technicien |
 | liste rebut               | administrateur web                      | consulter la liste du rebut/bloquer la liste du rebut |
 | journaux d'activité     | administrateur système                | consulter les différents journaux d’activités de la plateforme |
+
 
 
 
