@@ -16,7 +16,7 @@ Quatre rôles sont à définir pour la gestion des droits de la plateforme pour 
 **Les exigences fonctionnels à développer sont :**
 
 * l'utilisateur peut consulter une partie de l'inventaire
-* le technicien peut consulter le parc informatique
+* le technicien peut consulter l'inventaire
 * le technicien peut modifier une information dans la liste du parc informatique/exporter une liste en format csv
 * le technicien peut mettre une machine dans l’inventaire à partir d’un formulaire
 * le technicien peut mettre une série de machines dans l’inventaire à partir d’un fichier de données
