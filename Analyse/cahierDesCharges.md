@@ -15,17 +15,17 @@ Quatre rôles sont à définir pour la gestion des droits de la plateforme pour 
 
 **Pré-requis :**
 Connaissances requises :
-*Php
-*Administration Web
-*html/css
+* Php
+* Administration Web
+* html/css
 
 
 
 Ressources matérielles et logicielles :
-*raspBerry PI
-*Serveur web
-*Serveur SGBD
-*Système d'exploitation
+* raspBerry PI
+* Serveur web
+* Serveur SGBD
+* Système d'exploitation
 
 Compétences nécessaires :
 *
