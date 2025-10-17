@@ -20,7 +20,7 @@ header{
 }
 
 nav {
-    background-color: white;
+    background-color: whitesmoke;
     color: darkcyan;
     padding: 0;
     top: 0;
@@ -48,6 +48,15 @@ nav a:hover {
     color: white;
 }
 
+video, h2, h3{
+    margin: 30px auto;
+    padding: 20px;
+}
+
+p{
+    margin-left: 20px;
+}
+
 
 #pageConnexion{
     display: flex;
@@ -56,6 +65,13 @@ nav a:hover {
     align-items: center;
     width: 100%;
     height: 60vh;
+}
+
+#presentation{
+    background-color: whitesmoke;
+    border-radius: 10px;
+    align-items: center;
+
 }
 
 #connexion{
