@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="css/style.css">
+    <title>Page - Technicien</title>
+</head>
+<body>
+    <header>
+        <h1>Gestion</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="technicien.html">Gestion</a></li>
+            <li><a href="pageConnexion.html">Connexion</a></li>
+        </ul>
+    </nav>
+
+    <div id="technique">
+        <h3>Ajout machine</h3>
+        <div id="mettreMachinDansInventaire">
+            <form method="POST" action="">
+                <label>Machine :
+                    <input type="text" name="machine" id="machine" placeholder="nouvel machine"></label>
+                <label>Nombre :
+                    <input type="text" name="nombre" id="nombre" placeholder="nombre de machine"></label>
+                <input type="submit" value="Ajouter" name="OK">
+            </form>
+        </div>
+
+        <h3>Modifier machine</h3>
+        <div id="ModifierUneInfoDansInventaire">
+            <form method="POST" action="">
+                <label>Machine :
+                    <input type="text" name="machine" id="Mmachine" placeholder="nouvel machine"></label>
+                <label>Nombre :
+                    <input type="text" name="nombre" id="Mnombre" placeholder="nombre de machine"></label>
+                <input type="submit" value="Modifer" name="OK">
+            </form>
+        </div>
+
+        <h3>Exporter fichier des machines</h3>
+        <div id="exporte">
+            <input type="button" value="exporter" name="exporter">
+        </div>
+    </div>
+
+
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+</body>
+</html>
