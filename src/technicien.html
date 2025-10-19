@@ -18,14 +18,34 @@
 </nav>
 <div id="inventaires">
     <h2>Bienvenue (login)</h2>
-    <form method="post" action="">
-        <label> Nom :
-        <input type="text" name="nom" placeholder="Nom"></label>
-        <input>
-    </form>
-    <form method="post" action="">
+    <div id="technique">
+        <h3>Ajout machine</h3>
+        <div id="mettreMachinDansInventaire">
+            <form method="POST" action="">
+                <label>Machine :
+                    <input type="text" name="machine" id="machine" placeholder="nouvel machine"></label>
+                <label>Nombre :
+                    <input type="text" name="nombre" id="nombre" placeholder="nombre de machine"></label>
+                <input type="submit" value="Ajouter" name="OK">
+            </form>
+        </div>
 
-    </form>
+        <h3>Modifier machine</h3>
+        <div id="ModifierUneInfoDansInventaire">
+            <form method="POST" action="">
+                <label>Machine :
+                    <input type="text" name="machine" id="Mmachine" placeholder="nouvel machine"></label>
+                <label>Nombre :
+                    <input type="text" name="nombre" id="Mnombre" placeholder="nombre de machine"></label>
+                <input type="submit" value="Modifer" name="OK">
+            </form>
+        </div>
+
+        <h3>Exporter fichier des machines</h3>
+        <div id="exporte">
+            <input type="file" value="exporter" name="exporter">
+        </div>
+    </div>
     <h3>Inventaire des unités centrales</h3>
     <table>
         <tr>
