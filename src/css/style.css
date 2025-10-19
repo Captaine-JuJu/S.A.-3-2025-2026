@@ -25,6 +25,7 @@ nav {
     padding: 0;
     top: 0;
     width: 100%;
+    margin-bottom: 10px;
 
 }
 
@@ -48,25 +49,22 @@ nav a:hover {
     color: white;
 }
 
-video, h2, h3{
-    margin: 30px auto;
-    padding: 20px;
+h2, h3{
+    padding: 10px;
+    margin: 10px;
 }
+
 
 p{
-    margin-left: 20px;
-    padding-bottom: 20px;
+    margin: 20px;
 }
 
-
-#pageConnexion{
+#pagePresentation{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 60vh;
 }
+
+
 
 #presentation{
     display: flex;
@@ -75,7 +73,17 @@ p{
     background-color: whitesmoke;
     border-radius: 10px;
     align-items: center;
+    width: 25%;
 
+}
+
+#pageConnexion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
 }
 
 #connexion{
