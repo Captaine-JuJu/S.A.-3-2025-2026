@@ -25,7 +25,7 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 **Acteur principaux :** Technicien, Logiciel 
 
 <ins>Précondition :</ins>
-* le technicien est authentifié dans le système
+* Le technicien est authentifié dans le système
 * Le technicien accède à l’inventaire.
 
 <ins>Scénario nominal :</ins>
