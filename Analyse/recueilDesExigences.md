@@ -24,7 +24,7 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 **Niveau :** Mer \
 **Acteur principaux :** Technicien, Logiciel 
 
-Précondition:
+<ins>Précondition :</ins>
 * le technicien est authentifié dans le système
 * Le technicien accède à l’inventaire.
 
@@ -50,7 +50,7 @@ Précondition:
 **Niveau :** Poisson \
 **Acteur principaux :** Administrateur web, Logiciel, Technicien 
 
-Précondition:
+<ins>Précondition :</ins>
 * L’administrateur web est authentifié dans le système
 * L’administrateur accède à la liste des techniciens.
 
@@ -71,7 +71,7 @@ Précondition:
 **Niveau :** Nuage \
 **Acteur principaux :** Visiteur
 
-Précondition:
+<ins>Précondition :</ins>
 * Le visiteur se connecte au site et regarde la vidéo ainsi qu’une partie de l’inventaire.
 
 <ins>Scénario nominal :</ins>
