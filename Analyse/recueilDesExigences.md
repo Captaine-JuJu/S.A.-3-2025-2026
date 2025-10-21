@@ -26,16 +26,14 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 
 <ins>Scénario nominal :</ins>
 
-* Le technicien se connecte en renseignant son nom de compte et son mot de passe.
-* Le technicien accède à l’inventaire.
-* Le technicien ajoute un écran, pour cela il renseigne : le numéros de série, le fabricant, le modèle, la taille et le type de connecteur.
-* Le technicien consulte l’inventaire et l’écran est bien affiché.
+1. Le technicien est authentifié dans le système
+2. Le technicien accède à l’inventaire.
+3. Le technicien ajoute un écran, pour cela il renseigne : le numéros de série, le fabricant, le modèle, la taille et le type de connecteur.
+4. Le technicien consulte l’inventaire et l’écran est bien affiché.
 
 <ins>Scénario alternatif :</ins> Numéros de série déjà enregistré
 
-* Le technicien se connecte en renseignant son nom de compte et son mot de passe.
-* Le technicien accède à l’inventaire.
-* Le technicien ajoute un écran, pour cela il renseigne : le numéros de série, le fabricant, le modèle, la taille et le type de connecteur.
+* étape 1 et 2
 * Le logiciel affiche un message d’erreur indiquant que le numéros de série est déjà pris.
 * Le technicien consulte l'inventaire et l’écran qu’il voulait ajouter n’est pas répertorié.
 
