@@ -84,6 +84,9 @@ Le serveur sera hébergé sur un raspBerry Pi 4 fourni par le département Infor
 ## Autres exigences
 
 ## Facteurs humains
+* 5 développeurs
+
+exigence juridique et politique: respecter le RGPD
 
 
 
