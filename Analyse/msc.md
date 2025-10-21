@@ -2,7 +2,7 @@ Liste de questions afin de clarifier les exigences :
 
 * Quelle partie de l'inventaire doit être affiché pour les utlisateurs non-identifiés ?
 
-* Quelle informations doivent identifier un utlisateur ?
+* Quelle informations doivent identifier un utilisateur ?
 
 * L'administrateur web peut bloquer la liste rebut sur un interval de temps ou jusqu'à nouvel ordre ?
 
@@ -14,7 +14,8 @@ Liste de questions afin de clarifier les exigences :
 
 * Il  y a-t-il des fonctionnalités à développer en priorité ?
 
-* A-t-on le droit d'utiliser des librairies externes ?
+* A-t-on le droit d'utiliser des bibliothèques externes ?
+
 
 | Objet                         | Acteur |                                 Action|
 |:------------------------:|:-------------------------------:|:--------------------------------------------------------------:|
@@ -29,6 +30,7 @@ Liste de questions afin de clarifier les exigences :
 | technicien                | administrateur web                                     | supprimer un technicien |
 | liste rebut               | administrateur web                      | consulter la liste du rebut/bloquer la liste du rebut |
 | journaux d'activité     | administrateur système                | consulter les différents journaux d’activités de la plateforme |
+
 
 
 
