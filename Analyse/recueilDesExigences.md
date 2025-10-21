@@ -53,10 +53,10 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 
 <ins>Scénario nominal :</ins>
 
-* L’administrateur web se connecte en renseignant ses identifiants.
-* L’administrateur accède à la liste des techniciens.
-* L'administrateur crée un nouveau profil technicien en ajoutant un nouvel identifiant associé à un nouveau mot de passe.
-* Le nouveau technicien apparaît sur l’interface.
+1. L’administrateur web se connecte en renseignant ses identifiants.
+2. L’administrateur accède à la liste des techniciens.
+3. L'administrateur crée un nouveau profil technicien en ajoutant un nouvel identifiant associé à un nouveau mot de passe.
+4. Le nouveau technicien apparaît sur l’interface.
 
 <ins>Scénario alternatif :</ins> Identifiant déjà pris
 	
@@ -73,9 +73,9 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 **Acteur principaux :** Visiteur
 
 <ins>Scénario nominal :</ins>
-* Le visiteur se connecte au site et regarde la vidéo ainsi qu’une partie de l’inventaire.
-* Le visiteur s’identifie en renseignant son identifiant et son mot de passe pour passer en technicien.
-* Le visiteur consulte la totalité de l'inventaire.
+1. Le visiteur se connecte au site et regarde la vidéo ainsi qu’une partie de l’inventaire.
+2. Le visiteur s’identifie en renseignant son identifiant et son mot de passe pour passer en technicien.
+3. Le visiteur consulte la totalité de l'inventaire.
 
 <ins>Scénario alternatif :</ins> Mot de passe ou identifiant invalide
 * Le visiteur se connecte au site et regarde la vidéo ainsi qu’une partie de l’inventaire.
