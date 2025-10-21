@@ -62,12 +62,15 @@ p{
 table, th, tr, td{
     border-collapse: collapse;
     border: solid black 1px;
-    width: 40%;
+    width: 50%;
+    padding: 10px;
 }
 
 th{
     background-color: darkcyan;
     color: white;
+    width: 100%;
+    margin: 10%;
 }
 
 #pagePresentation{
@@ -84,7 +87,7 @@ th{
     background-color: whitesmoke;
     border-radius: 10px;
     align-items: center;
-    width: 25%;
+    width: 90%;
 
 }
 
@@ -96,6 +99,7 @@ th{
     border-radius: 10px;
     align-items: center;
     width: 75%;
+    padding-bottom: 20px;
 }
 
 #pageConnexion{
@@ -127,4 +131,26 @@ input{
 label{
     display: flex;
     flex-direction: column;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+#formulaireAjouterSupprimer{
+    display: flex;
+    flex-direction: row;
+}
+
+#ModifierUneInfoDansInventaire{
+    margin: 50px;
+}
+
+#mettreMachinDansInventaire{
+    margin: 50px;
+}
+
+#exporte input{
+    width: 100px;
 }

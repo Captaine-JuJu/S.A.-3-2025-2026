@@ -16,69 +16,78 @@
         <li><a href="pageConnexion.html">Connexion</a></li>
     </ul>
 </nav>
-<div id="inventaires">
-    <h2>Bienvenue (login)</h2>
-    <div id="technique">
-        <h3>Ajout machine</h3>
-        <div id="mettreMachinDansInventaire">
-            <form method="POST" action="">
-                <label>Machine :
-                    <input type="text" name="machine" id="machine" placeholder="nouvel machine"></label>
-                <label>Nombre :
-                    <input type="text" name="nombre" id="nombre" placeholder="nombre de machine"></label>
-                <input type="submit" value="Ajouter" name="OK">
-            </form>
-        </div>
+<div id="container">
+    <div id="inventaires">
+        <h2>Bienvenue (login)</h2>
+        <div id="technique">
+            <div id="formulaireAjouterSupprimer">
+                <div id="mettreMachinDansInventaire">
+                    <h3>Ajout machine</h3>
+                    <form method="POST" action="">
+                        <label>Machine :
+                            <input type="text" name="machine" id="machine" placeholder="nouvel machine"></label>
+                        <label>Nombre :
+                            <input type="text" name="nombre" id="nombre" placeholder="nombre de machine"></label>
+                        <input type="submit" value="Ajouter" name="OK">
+                    </form>
+                </div>
 
-        <h3>Modifier machine</h3>
-        <div id="ModifierUneInfoDansInventaire">
-            <form method="POST" action="">
-                <label>Machine :
-                    <input type="text" name="machine" id="Mmachine" placeholder="nouvel machine"></label>
-                <label>Nombre :
-                    <input type="text" name="nombre" id="Mnombre" placeholder="nombre de machine"></label>
-                <input type="submit" value="Modifier" name="OK">
-            </form>
+                <div id="ModifierUneInfoDansInventaire">
+                    <h3>Modifier machine</h3>
+                    <form method="POST" action="">
+                        <label>Machine :
+                            <input type="text" name="machine" id="Mmachine" placeholder="nouvel machine"></label>
+                        <label>Nombre :
+                            <input type="text" name="nombre" id="Mnombre" placeholder="nombre de machine"></label>
+                        <input type="submit" value="Modifier" name="OK">
+                    </form>
+                </div>
+            </div>
+            <h3>Exporter fichier des machines</h3>
+            <div id="exporte">
+                <label>Exporter :
+                    <input type="button" value="exporter" name="exporter"></label>
+            </div>
+            <h3>Importer fichier des machines</h3>
+            <div id="import">
+                <label>Importer :
+                <input type="file" value="importer" name="importer"></label>
+            </div>
         </div>
-
-        <h3>Exporter fichier des machines</h3>
-        <div id="exporte">
-            <input type="file" value="exporter" name="exporter">
-        </div>
+        <h3>Inventaire des unités centrales</h3>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>N° série</th>
+                <th>Fabricant</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>CPU</th>
+                <th>RAM</th>
+                <th>Stockage</th>
+                <th>OS</th>
+                <th>Domain</th>
+                <th>Localisation</th>
+                <th>Bâtiment</th>
+                <th>Pièce</th>
+                <th>DDR</th>
+                <th>Date d'achat</th>
+                <th>Date fin garantis</th>
+            </tr>
+        </table>
+        <h3>Inventaire des écrans</h3>
+        <table>
+            <tr>
+                <th>N° série</th>
+                <th>Fabricant</th>
+                <th>Model</th>
+                <th>Taille</th>
+                <th>Résolution</th>
+                <th>Connecteur</th>
+                <th>Support</th>
+            </tr>
+        </table>
     </div>
-    <h3>Inventaire des unités centrales</h3>
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>N° série</th>
-            <th>Fabricant</th>
-            <th>Model</th>
-            <th>Type</th>
-            <th>CPU</th>
-            <th>RAM</th>
-            <th>Stockage</th>
-            <th>OS</th>
-            <th>Domain</th>
-            <th>Localisation</th>
-            <th>Bâtiment</th>
-            <th>Pièce</th>
-            <th>DDR</th>
-            <th>Date d'achat</th>
-            <th>Date fin garantis</th>
-        </tr>
-    </table>
-    <h3>Inventaire des écrans</h3>
-    <table>
-        <tr>
-            <th>N° série</th>
-            <th>Fabricant</th>
-            <th>Model</th>
-            <th>Taille</th>
-            <th>Résolution</th>
-            <th>Connecteur</th>
-            <th>Support</th>
-        </tr>
-    </table>
 </div>
 </body>
 </html>
