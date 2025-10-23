@@ -5,7 +5,7 @@ html {
 }
 
 body{
-    background-color: lightgreen;
+    background-color: #aef3ae;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -100,8 +100,17 @@ th{
     background-color: whitesmoke;
     border-radius: 10px;
     align-items: center;
-    width: 75%;
+    width: 90%;
     padding-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#inventaires table{
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
 }
 
 #pageConnexion{
