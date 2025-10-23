@@ -5,10 +5,14 @@
 Ce projet a pour objectif de créer une application web permetant le gestion d'un parc informatique.
 Les techniciens et les administrateurs web doivent pouvoir gérer les machines de l'entreprise à partir de l'application.
 
-<ins>Portée du système :</ins>
+**<ins>Portée du système</ins>** \
+Inclus :
 * gestion d'un inventaire (ajout et suppression d'element)
 * gestion des droits utilisateurs
 * connexion 
+
+Exclus :
+* Le composant hors périmètre du projet est le choix du modèle du serveur
 
 
 Ce projet est développé par Julian JUBAULT--JEAN, Victor FORTIN, Clara RALU--LEROY, Manel ASSAL et Antoine LAPLUYE. 
