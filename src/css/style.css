@@ -147,8 +147,13 @@ label{
 #formulaireAjouterSupprimer{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
-
+    #formulaireImporterExporterFichier{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 #ModifierUneInfoDansInventaire{
     margin: 50px;
 }
