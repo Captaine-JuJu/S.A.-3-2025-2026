@@ -106,12 +106,7 @@ th{
     overflow: hidden;
 }
 
-#inventaires table{
-    width: 95%;
-    margin-right: auto;
-    margin-left: auto;
-    border-collapse: collapse;
-}
+#unit
 
 #pageConnexion{
     display: flex;
