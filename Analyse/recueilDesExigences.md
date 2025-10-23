@@ -96,8 +96,6 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 
 Le serveur sera hébergé sur un raspBerry Pi 4 fourni par le département Informatique. Le projet sera développé en PHP, HTML, CSS et SQL. Le code source du projet ainsi que sa documentation doivent être disponibles sur Github. 
 
-## Autres exigences
-
 ## Facteurs humains
 * 5 développeurs
 
