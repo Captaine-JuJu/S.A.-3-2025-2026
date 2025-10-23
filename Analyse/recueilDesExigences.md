@@ -2,6 +2,17 @@
 
 ## Objectif et portée
 
+Ce projet a pour objectif de créer une application web permetant le gestion d'un parc informatique.
+Les techniciens et les administrateurs web doivent pouvoir gérer les machines de l'entreprise à partir de l'application.
+
+<ins>Portée du système :</ins>
+* gestion d'un inventaire (ajout et suppression d'element)
+* gestion des droits utilisateurs
+* connexion 
+
+
+Ce projet est développé par Julian JUBAULT--JEAN, Victor FORTIN, Clara RALU--LEROY, Manel ASSAL et Antoine LAPLUYE. 
+La maintenance sera assurée par un administrateur système ainsi que des administrateurs web désignés par le client.
 
 
 ## Terminologie employée
