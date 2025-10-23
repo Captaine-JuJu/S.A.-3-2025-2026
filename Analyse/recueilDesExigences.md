@@ -2,6 +2,21 @@
 
 ## Objectif et portée
 
+Ce projet a pour objectif de créer une application web permetant le gestion d'un parc informatique.
+Les techniciens et les administrateurs web doivent pouvoir gérer les machines de l'entreprise à partir de l'application.
+
+**<ins>Portée du système</ins>** \
+Inclus :
+* gestion d'un inventaire (ajout et suppression d'element)
+* gestion des droits utilisateurs
+* connexion 
+
+Exclus :
+* Le composant hors périmètre du projet est le choix du modèle du serveur
+
+
+Ce projet est développé par Julian JUBAULT--JEAN, Victor FORTIN, Clara RALU--LEROY, Manel ASSAL et Antoine LAPLUYE. 
+La maintenance sera assurée par un administrateur système ainsi que des administrateurs web désignés par le client.
 
 
 ## Terminologie employée
@@ -80,8 +95,6 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 ## Technologie employée
 
 Le serveur sera hébergé sur un raspBerry Pi 4 fourni par le département Informatique. Le projet sera développé en PHP, HTML, CSS et SQL. Le code source du projet ainsi que sa documentation doivent être disponibles sur Github. 
-
-## Autres exigences
 
 ## Facteurs humains
 * 5 développeurs
