@@ -20,27 +20,128 @@
     <div id="inventaires">
         <h2>Bienvenue (login)</h2>
         <div id="technique">
-            <div id="formulaireAjouterSupprimer">
-                <div id="mettreMachinDansInventaire">
-                    <h3>Ajout machine</h3>
+            <div id="formulaireAjouter">
+                <h3>Ajout Unitée Central</h3>
+                <div id="ajoutUC">
                     <form method="POST" action="">
-                        <label>Machine :
-                            <input type="text" name="machine" id="machine" placeholder="nouvel machine"></label>
-                        <label>Nombre :
-                            <input type="text" name="nombre" id="nombre" placeholder="nombre de machine"></label>
+                        <table>
+                            <tr>
+                                <td>
+                                <label>Nom :
+                                    <input type="text" name="nom" id="nom"></label>
+                                </td>
+                                <td>
+                                <label>N° Serie :
+                                    <input type="number" name="nSerieUC" id="nSerieUC"></label>
+                                </td>
+                                <td>
+                                <label>Fabricant :
+                                    <input type="text" name="fabricantUC" id="fabricantUC"></label>
+                                </td>
+                                <td>
+                                <label>Model :
+                                    <input type="text" name="modelUC" id="modelUC"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <label>Type :
+                                    <input type="text" name="typeUC" id="typeUC"></label>
+                                </td>
+                                <td>
+                                <label>CPU :
+                                    <input type="text" name="CPUUC" id="CPUUC"></label>
+                                </td>
+                                <td>
+                                <label>RAM :
+                                    <input type="text" name="RAMUC" id="RAMUC"></label>
+                                </td>
+                                <td>
+                                <label>Stockage :
+                                    <input type="text" name="stockageUC" id="stockageUC"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <label>OS :
+                                    <input type="text" name="OSUC" id="OSUC"></label>
+                                </td>
+                                <td>
+                                <label>Domaine :
+                                    <input type="text" name="domaineUC" id="domaineUC"></label>
+                                </td>
+                                <td>
+                                <label>Localisation :
+                                    <input type="text" name="localisationUC" id="localisationUC"></label>
+                                </td>
+                                <td>
+                                <label>Bâtiment :
+                                    <input type="text" name="batimentUC" id="batimentUC"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <label>Pièce :
+                                    <input type="text" name="pieceUC" id="pieceUC"></label>
+                                </td>
+                                <td>
+                                <label>DDR :
+                                    <input type="text" name="DDRUC" id="DDRUC"></label>
+                                </td>
+                                <td>
+                                <label>Date d'achat :
+                                    <input type="date" name="dateAchatUC" id="dateAchatUC"></label>
+                                </td>
+                                <td>
+                                <label>Date de fin de garantis :
+                                    <input type="date" name="finGarantisUC" id="finGarantisUC"></label>
+                                </td>
+                            </tr>
+                        </table>
                         <input type="submit" value="Ajouter" name="OK">
                     </form>
                 </div>
+                <h3>Ajout Ecran</h3>
+                <div id="ajoutEcran">
 
-                <div id="ModifierUneInfoDansInventaire">
-                    <h3>Modifier machine</h3>
                     <form method="POST" action="">
-                        <label>Machine :
-                            <input type="text" name="machine" id="Mmachine" placeholder="nouvel machine"></label>
-                        <label>Nombre :
-                            <input type="text" name="nombre" id="Mnombre" placeholder="nombre de machine"></label>
-                        <input type="submit" value="Modifier" name="OK">
+                        <table>
+                            <tr>
+                                <td>
+                                <label>N° série :
+                                    <input type="number" name="nSerieE" id="nSerieE"></label>
+                                </td>
+                                <td>
+                                <label>Fabricant :
+                                    <input type="text" name="fabricantE" id="fabricantE"></label>
+                                </td>
+                                <td>
+                                <label>Model :
+                                    <input type="text" name="modelE" id="modelE"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Taille :
+                                        <input type="text" name="tailleE" id="tailleE"></label>
+                                </td>
+                                <td>
+                                    <label>Résolution :
+                                        <input type="text" name="resolutionE" id="resolutionE"></label>
+                                </td>
+                                <td>
+                                    <label>Relié à :
+                                        <input type="text" name="connecteurE" id="connecteurE"></label>
+                                </td>
+                                <td>
+                                    <label>Support :
+                                        <input type="text" name="supportE" id="supportE"></label>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="Ajouter" name="OK">
                     </form>
+
                 </div>
             </div>
 
@@ -86,11 +187,12 @@
                 <th>Model</th>
                 <th>Taille</th>
                 <th>Résolution</th>
-                <th>Connecteur</th>
+                <th>Relié à</th>
                 <th>Support</th>
             </tr>
         </table>
     </div>
+</div>
 </div>
 </body>
 </html>

@@ -106,8 +106,6 @@ th{
     overflow: hidden;
 }
 
-#unit
-
 #pageConnexion{
     display: flex;
     flex-direction: column;
@@ -128,12 +126,11 @@ th{
 
 }
 
-input{
+input {
     border-radius: 10px;
     padding: 8px;
     margin: 5px;
 }
-
 label{
     display: flex;
     flex-direction: column;
@@ -144,24 +141,24 @@ label{
     justify-content: center;
 }
 
-#formulaireAjouterSupprimer{
+#formulaireAjouter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#formulaireImporterExporterFichier{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-    #formulaireImporterExporterFichier{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-#ModifierUneInfoDansInventaire{
+
+#ajoutEcran{
+    display: flex;
     margin: 50px;
 }
 
-#mettreMachinDansInventaire{
+#ajoutUC{
+    display: flex;
     margin: 50px;
 }
 
-#exporte input{
-    width: 100px;
-}
