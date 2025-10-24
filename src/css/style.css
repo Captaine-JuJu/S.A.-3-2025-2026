@@ -8,6 +8,7 @@ body{
     background-color: #aef3ae;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     font-family: Arial, sans-serif;
 }
 
@@ -33,7 +34,8 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
     justify-content: center;
 
 }
@@ -146,6 +148,7 @@ label{
     flex-direction: column;
     justify-content: center;
 }
+
 #formulaireImporterExporterFichier{
     display: flex;
     flex-direction: row;
@@ -154,11 +157,12 @@ label{
 
 #ajoutEcran{
     display: flex;
-    margin: 50px;
+    justify-content: center;
 }
 
 #ajoutUC{
     display: flex;
-    margin: 50px;
+    justify-content: center;
+
 }
 
