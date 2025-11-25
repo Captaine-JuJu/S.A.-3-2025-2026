@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Connexion</title>
+<?php
+include("../headers.html");
+?>
+<title>Connexion</title>
 </head>
 <body>
-    <header>
-        <h1>Connexion</h1>
 
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="technicien.html">Gestion</a></li>
-            <li><a href="pageConnexion.html">Connexion</a></li>
-        </ul>
-    </nav>
+
+<header>
+    <h1>Connexion</h1>
+
+</header>
+<nav>
+    <ul>
+        <li><a href="index.php">Accueil</a></li>
+        <li><a href="technicien.php">Gestion</a></li>
+        <li><a href="login.php">Connexion</a></li>
+    </ul>
+</nav>
     <div id="pageConnexion">
         <div id="connexion">
             <form method="post" action="">
