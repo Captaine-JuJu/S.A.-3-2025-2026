@@ -12,7 +12,7 @@ include("../headers.html");
     <ul>
         <li><a href="index.php">Accueil</a></li>
         <li><a href="technicien.php">Gestion</a></li>
-        <li><a href="login.php">Connexion</a></li>
+        <li><a href="pageConnexion.php">Connexion</a></li>
     </ul>
 </nav>
 <div id="pagePresentation">
