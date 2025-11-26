@@ -33,5 +33,6 @@ include("../headers.html");
         </p>
     </div>
 </div>
-</body>
-</html>
+<?php
+include("../footers.html");
+?>

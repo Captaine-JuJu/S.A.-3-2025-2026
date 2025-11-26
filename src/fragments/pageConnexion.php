@@ -31,5 +31,6 @@ include("../headers.html");
             echo "Connexion échoué";
         ?>
     </div>
-</body>
-</html>
+<?php
+include("../footers.html");
+?>
