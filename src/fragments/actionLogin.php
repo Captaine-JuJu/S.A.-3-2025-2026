@@ -2,25 +2,23 @@
 
 print_r($_POST);
 
-$filename = "données/connections.csv";
-$fp = fopen($filename, "r");
+$connect = mysqli_connect("localhost", "root", "");
+$bd = mysqli_select_db($connect, "sae");
 
-
-if (isset($_POST["login"], $_POST["mdp"])) {
+if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
     $login = $_POST["login"];
     $mdp = $_POST["mdp"];
 
-    while (($resultat = fgetcsv($fp))) {
-
-        $log1 = $resultat[0];
-        $mdp1 = $resultat[1];
-
-        if ($login == $log1 && $mdp == $mdp1) {
+    $sql = "SELECT * FROM user";
+    $result = mysqli_query($connect, $sql);
+    while($ligne = mysqli_fetch_row($result)){
+        if ($login == $ligne[0] && $mdp == $ligne[1]){
             session_start();
             $_SESSION["login"] = $login;
-            header("location: admin.php");
+            header("location: journauxActivites.php");
             exit(0);
         }
     }
+
 }
-header("location: login.php?error");
+header("location: pageConnexion.php?error");
