@@ -13,12 +13,18 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
 
     // requete SQL sur la table user
     $sql = "SELECT * FROM user";
+    // requete SQL préparé
+    $sqlp = "SELECT * FROM user WHERE login=? AND password=?";
+
     //envoie de la requete à la base de donnée
     $result = mysqli_query($connect, $sql);
+    //Prépare requête SQL
+    $requete = mysqli_prepare($connect, $sqlp);
+
     // lecture ligne par ligne de la table user
     while($ligne = mysqli_fetch_row($result)){
         // verification de l'identifiant et du mot de passe en comparant aux données de la table user
-        if ($login == $ligne[0] && $mdp == $ligne[1]){
+        if ($login == $ligne[0] && $mdp == $ligne[1] && mysqli_stmt_bind_param($requete, "ss", $login, $mdp)){
             session_start();
             $_SESSION["login"] = $login;
             header("location: journauxActivites.php");
