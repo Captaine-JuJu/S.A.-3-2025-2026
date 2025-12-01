@@ -1,19 +1,12 @@
 <?php
-include("../headers.html");
+include("../fragments/headers.html");
 ?>
-    <title>Page - Technicien</title>
-    </head>
-    <body>
     <header>
         <h1>Gestion</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="technicien.php">Gestion</a></li>
-            <li><a href="pageConnexion.php">Connexion</a></li>
-        </ul>
-    </nav>
+    <?php
+    include("../fragments/menuTech.html");
+    ?>
     <div id="container">
         <div id="inventaires">
             <h2>Bienvenue (login)</h2>
@@ -99,10 +92,11 @@ include("../headers.html");
                             <input type="submit" value="Ajouter" name="OK">
                         </form>
                     </div>
+
                     <h3>Ajout Ecran</h3>
                     <div id="ajoutEcran">
 
-                        <form method="POST" action="">
+                        <form method="POST" action="actionAjout.php">
                             <table role="presentation">
                                 <tr>
                                     <td>
@@ -139,7 +133,14 @@ include("../headers.html");
                             </table>
                             <input type="submit" value="Ajouter" name="OK">
                         </form>
-
+                        <?php
+                            if (isset($_GET['error']))
+                                echo "Connexion échoué";
+                            else if (isset($_GET['creation=deja_existent']))
+                                echo "numéros déjà existant";
+                            else if (isset($_GET['creation=ok']))
+                                echo "Ajout réussie";
+                        ?>
                     </div>
                 </div>
 
@@ -157,6 +158,14 @@ include("../headers.html");
                     </div>
                 </div>
                 <h3>Inventaire des unités centrales</h3>
+
+                <?php
+                    $connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+                    $bd = mysqli_select_db($connect, "users");
+                    $sql = "SELECT * FROM Devices";
+                    $result = mysqli_query($connect, $sql);
+                ?>
+
                 <table id="unitéesCentrales">
                     <tr>
                         <th>Nom</th>
@@ -176,8 +185,22 @@ include("../headers.html");
                         <th>Date d'achat</th>
                         <th>Date fin garantis</th>
                     </tr>
+                    <?php
+                        while ($ligne = mysqli_fetch_array($result)) {
+                            echo "<tr>";
+                            foreach ($ligne as $value){
+                                echo "<td>".$value."</td>";
+                            }
+                            echo "</tr>";
+                        }
+                    ?>
+
                 </table>
                 <h3>Inventaire des écrans</h3>
+                <?php
+                $sql = "SELECT * FROM Monitors";
+                $result = mysqli_query($connect, $sql);
+                ?>
                 <table>
                     <tr>
                         <th>N° série</th>
@@ -188,16 +211,26 @@ include("../headers.html");
                         <th>Relié à</th>
                         <th>Support</th>
                     </tr>
+                    <?php
+                    while ($ligne = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        foreach ($ligne as $value){
+                            echo "<td>".$value."</td>";
+                        }
+                        echo "</tr>";
+                    }
+                    ?>
                 </table>
             </div>
         </div>
     </div>
 <?php
-include("../footers.html");
+//Fermeture base de donnée
+mysqli_close($connect);
+include("../fragments/footers.html");
 ?>
-<!---->
 <?php
-//include("technicien.html");
+//include("techniciens.html");
 //session_start();
 //if(isset($_SESSION['login'])){
 //    $login = $_SESSION['login'];

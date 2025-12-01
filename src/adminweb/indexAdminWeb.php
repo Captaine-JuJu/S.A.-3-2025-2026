@@ -1,20 +1,12 @@
 <?php
-include("../headers.html");
+include("../fragments/headers.html");
 ?>
-<title>Accueil</title>
-</head>
-<body>
 <header>
     <h1>Accueil</h1>
-
 </header>
-<nav>
-    <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="technicien.php">Gestion</a></li>
-        <li><a href="pageConnexion.php">Connexion</a></li>
-    </ul>
-</nav>
+<?php
+include("../fragments/menuweb.html");
+?>
 <div id="pagePresentation">
     <div id="presentation">
         <h2>Présentation de la platforme : </h2>
@@ -34,5 +26,5 @@ include("../headers.html");
     </div>
 </div>
 <?php
-include("../footers.html");
+include("../fragments/footers.html");
 ?>
