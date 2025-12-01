@@ -9,7 +9,7 @@ include("../fragments/headers.html");
     ?>
     <div id="container">
         <div id="inventaires">
-            <h2>Bienvenue (login)</h2>
+            <h2>Bienvenue <?php echo $_GET['login'] ?></h2>
             <div id="technique">
                 <div id="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
