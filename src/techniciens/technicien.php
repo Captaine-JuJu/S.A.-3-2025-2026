@@ -230,3 +230,19 @@ mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
 <?php
+//include("techniciens.html");
+//session_start();
+//if(isset($_SESSION['login'])){
+//    $login = $_SESSION['login'];
+//    if ($_SESSION['login']=="admin"){
+//        echo"bonjour Administrateur";
+//        echo "<br>";
+//    }else{
+//        echo"bonjour $login";
+//        echo "<br>";
+//    }
+//
+//    echo "<a href='logout.php'>logout </a>";
+//} else {
+//    header("location:login.php?error");
+//}
