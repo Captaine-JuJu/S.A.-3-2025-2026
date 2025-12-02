@@ -160,7 +160,7 @@ include("../fragments/menuTech.html");
                 <h3>Inventaire des unités centrales</h3>
 
                 <?php
-                    $connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+                    $connect = mysqli_connect("localhost", "root", "azerty", "users");
                     $bd = mysqli_select_db($connect, "users");
                     $sql = "SELECT * FROM Devices";
                     $result = mysqli_query($connect, $sql);

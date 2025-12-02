@@ -20,8 +20,8 @@ if(isset($_POST["nom"], $_POST["nSerieUC"])){
     $date_fin = $_POST["finGarantisUC"];
 
     $connect = mysqli_connect("localhost", "root", "azerty", "users");
-    //$connect = mysqli_connect("localhost", "root", "");
-    $bd = mysqli_select_db($connect, "Devices");
+
+    $bd = mysqli_select_db($connect, "users");
 
     $sqlVerif = "SELECT * FROM Devices WHERE Num_serie='$nSerieUC';";
     $sqlVerifP = "SELECT * FROM Devices WHERE Num_serie=?;";
@@ -33,10 +33,13 @@ if(isset($_POST["nom"], $_POST["nSerieUC"])){
     if(mysqli_num_rows($result) == 0 && mysqli_stmt_bind_param($requete, "s", $nSerieUC)){
 
         $sqlAdd = "INSERT INTO Devices VALUES ('$nom','$nSerieUC','$fabriquant','$model','$type','$cpu','$ram','$stockage','$OS','$Domaine','$Localisation','$batiment','$date_achat','$date_fin');";
-        mysqli_query($connect, $sqlAdd);
+        $resultc = mysqli_query($connect, $sqlAdd);
+
+        mysqli_close($connect);
         header("location: technicien.php?creation=ok");
 
     }
+    mysqli_close($connect);
     header("location: technicien.php?creation=deja_existent");
 
 }
