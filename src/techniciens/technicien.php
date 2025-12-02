@@ -1,12 +1,13 @@
 <?php
 include("../fragments/headers.html");
+
 ?>
     <header>
         <h1>Gestion</h1>
     </header>
-    <?php
-    include("../fragments/menuTech.html");
-    ?>
+<?php
+include("../fragments/menuTech.html");
+?>
     <div id="container">
         <div id="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
@@ -14,7 +15,7 @@ include("../fragments/headers.html");
                 <div id="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
                     <div id="ajoutUC">
-                        <form method="POST" action="">
+                        <form method="POST" action="actionAjout.php">
                             <table role="presentation">
                                 <tr>
                                     <td>
@@ -23,7 +24,7 @@ include("../fragments/headers.html");
                                     </td>
                                     <td>
                                         <label>N° Serie :
-                                            <input type="number" name="nSerieUC" id="nSerieUC"></label>
+                                            <input type="text" name="nSerieUC" id="nSerieUC"></label>
                                     </td>
                                     <td>
                                         <label>Fabricant :
@@ -134,12 +135,12 @@ include("../fragments/headers.html");
                             <input type="submit" value="Ajouter" name="OK">
                         </form>
                         <?php
-                            if (isset($_GET['error']))
-                                echo "Connexion échoué";
-                            else if (isset($_GET['creation=deja_existent']))
-                                echo "numéros déjà existant";
-                            else if (isset($_GET['creation=ok']))
-                                echo "Ajout réussie";
+                        if (isset($_GET['error']))
+                            echo "Connexion échoué";
+                        else if (isset($_GET['creation=deja_existent']))
+                            echo "numéros déjà existant";
+                        else if (isset($_GET['creation=ok']))
+                            echo "Ajout réussie";
                         ?>
                     </div>
                 </div>
@@ -160,10 +161,10 @@ include("../fragments/headers.html");
                 <h3>Inventaire des unités centrales</h3>
 
                 <?php
-                    $connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
-                    $bd = mysqli_select_db($connect, "users");
-                    $sql = "SELECT * FROM Devices";
-                    $result = mysqli_query($connect, $sql);
+                $connect = mysqli_connect("192.168.25.15", "root", "sea2025","!sea2025!", "users");
+                $bd = mysqli_select_db($connect, "users");
+                $sql = "SELECT * FROM Devices";
+                $result = mysqli_query($connect, $sql);
                 ?>
 
                 <table id="unitéesCentrales">
@@ -186,13 +187,13 @@ include("../fragments/headers.html");
                         <th>Date fin garantis</th>
                     </tr>
                     <?php
-                        while ($ligne = mysqli_fetch_array($result)) {
-                            echo "<tr>";
-                            foreach ($ligne as $value){
-                                echo "<td>".$value."</td>";
-                            }
-                            echo "</tr>";
+                    while ($ligne = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        foreach ($ligne as $value){
+                            echo "<td>".$value."</td>";
                         }
+                        echo "</tr>";
+                    }
                     ?>
 
                 </table>
@@ -229,4 +230,3 @@ include("../fragments/headers.html");
 mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
-<?php

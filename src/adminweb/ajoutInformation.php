@@ -25,14 +25,13 @@ include("../fragments/menuweb.html");
     </div>
 </div>
 <?php
-$connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+$connect = mysqli_connect("localhost", "root", "azerty", "users");
 //$connect = mysqli_connect("localhost", "root", "");
-$bd = mysqli_select_db($connect, "users");
+$bd = mysqli_select_db($connect, "os");
 if(isset($_POST["OS"], $_POST["fabriquant"],$_POST["fabriquant"])) {
     $OS = $_POST["OS"];
     $fabriquant = $_POST["fabriquant"];
-    $sql = "INSERT INTO Devices (Nom, Num_serie, Fabricant, Model, Type, CPU, RAM, Stockage, OS, Domaine, Localisation, Bâtiment, Pieces, Mac_addr, Date_achat, Date_garantis) VALUES
-                                                    ('', '', '$fabriquant', '', '', '','','','$OS', '', '', '', '', '','','');";
+    $sql = "INSERT INTO os (Nom, Fabricant) VALUES('$OS','$fabriquant');";
     if (mysqli_query($connect, $sql)) {
         echo "Nouveau enregistrement créé avec succès";
     } else {
