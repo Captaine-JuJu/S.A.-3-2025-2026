@@ -19,8 +19,8 @@ if(isset($_POST["nom"], $_POST["nSerieUC"])){
     $date_achat = $_POST["dateAchatUC"];
     $date_fin = $_POST["finGarantisUC"];
 
-    $connect = mysqli_connect("192.168.25.15", "root", "azerty", "users");
-    //$connect = mysqli_connect("localhost", "root", "");
+    $connect = mysqli_connect("localhost", "root", "azerty", "users");
+
     $bd = mysqli_select_db($connect, "Devices");
 
     $sqlVerif = "SELECT * FROM Devices WHERE Num_serie='$nSerieUC';";
@@ -38,6 +38,5 @@ if(isset($_POST["nom"], $_POST["nSerieUC"])){
 
     }
     header("location: technicien.php?creation=deja_existent");
-
 }
 header("location: technicien.php?error");

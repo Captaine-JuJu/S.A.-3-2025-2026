@@ -14,7 +14,7 @@ include("../fragments/headers.html");
                 <div id="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
                     <div id="ajoutUC">
-                        <form method="POST" action="">
+                        <form method="POST" action="actionAjout.php">
                             <table role="presentation">
                                 <tr>
                                     <td>
