@@ -19,7 +19,7 @@ if(isset($_POST["nom"], $_POST["nSerieUC"])){
     $date_achat = $_POST["dateAchatUC"];
     $date_fin = $_POST["finGarantisUC"];
 
-    $connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+    $connect = mysqli_connect("192.168.25.15", "root", "azerty", "users");
     //$connect = mysqli_connect("localhost", "root", "");
     $bd = mysqli_select_db($connect, "Devices");
 

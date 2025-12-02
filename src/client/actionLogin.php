@@ -3,8 +3,8 @@
 print_r($_POST);
 
 // connexion au a la base de donnée
-$connect = mysqli_connect("192.168.25.15", "root", "azerty","!sae2025!", "users");
-//$connect = mysqli_connect("localhost", "root", "");
+$connect = mysqli_connect("localhost", "root", "azerty", "users");
+
 $bd = mysqli_select_db($connect, "users");
 
 // verification des données du formulaire
