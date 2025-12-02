@@ -3,7 +3,7 @@
 print_r($_POST);
 
 // connexion au a la base de donnée
-$connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+$connect = mysqli_connect("192.168.25.15", "root", "azerty","!sae2025!", "users");
 //$connect = mysqli_connect("localhost", "root", "");
 $bd = mysqli_select_db($connect, "users");
 
