@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 print_r($_POST);
 
@@ -27,20 +27,20 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Ajouter"])) {
     if ( mysqli_stmt_bind_param($requete, "s", $login)) {
         // lecture ligne par ligne de la table user
         while ($ligne = mysqli_fetch_row($result)) {
-            // verification de l'identifiant et du mot de passe en comparant aux données de la table user
-            if ($login != $ligne[0]) {
-                $sqlc = "INSERT INTO user VALUES ('$login', '$mdp', 'Techniciens')";
-
-                //envoie de la requete à la base de donnée
-                $resultc = mysqli_query($connect, $sqlc);
-
+            // verification de l'identifiant en comparant aux données de la table user
+            if ($login == $ligne[0]) {
                 mysqli_close($connect);
-
-                header("location: ajoutTech.php?creation=ok");
+                header("location: ajoutTech.php?creation=deja_existent");
             }
-            mysqli_close($connect);
-            header("location: ajoutTech.php?creation=deja_existent");
         }
+        $sqlc = "INSERT INTO user VALUES ('$login', '$mdp', 'Techniciens')";
+
+        //envoie de la requete à la base de donnée
+        $resultc = mysqli_query($connect, $sqlc);
+
+        mysqli_close($connect);
+
+        header("location: ajoutTech.php?creation=ok");
     }
 }
 //Fermeture ede la bdd
