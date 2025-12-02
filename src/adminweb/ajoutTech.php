@@ -10,8 +10,8 @@ include("../fragments/menuweb.html");
 <div id="pageConnexion">
     <div id="connexion">
         <form method="POST" action="actionCreationTech.php">
-            <label >Creation de l'identifiants :<input name="login" id="login" type="text" placeholder="Identifiant"></label>
-            <label >Création du mot de passe : <input name="mdp" id="mdp" type="password" placeholder="Mot de passe"></label>
+            <label >Création de l'identifiants :<input name="login" id="login" type="text" placeholder="Identifiant"></label>
+            <label >Création du Mot de passe : <input name="mdp" id="mdp" type="password" placeholder="Mot de passe"></label>
             <input type="submit" value="Ajouter" name="Ajouter">
         </form>
     </div>

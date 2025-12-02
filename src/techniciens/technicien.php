@@ -1,6 +1,5 @@
 <?php
 include("../fragments/headers.html");
-
 ?>
     <header>
         <h1>Gestion</h1>
@@ -24,7 +23,7 @@ include("../fragments/menuTech.html");
                                     </td>
                                     <td>
                                         <label>N° Serie :
-                                            <input type="text" name="nSerieUC" id="nSerieUC"></label>
+                                            <input type="number" name="nSerieUC" id="nSerieUC"></label>
                                     </td>
                                     <td>
                                         <label>Fabricant :
@@ -135,12 +134,12 @@ include("../fragments/menuTech.html");
                             <input type="submit" value="Ajouter" name="OK">
                         </form>
                         <?php
-                        if (isset($_GET['error']))
-                            echo "Connexion échoué";
-                        else if (isset($_GET['creation=deja_existent']))
-                            echo "numéros déjà existant";
-                        else if (isset($_GET['creation=ok']))
-                            echo "Ajout réussie";
+                            if (isset($_GET['error']))
+                                echo "Connexion échoué";
+                            else if (isset($_GET['creation=deja_existent']))
+                                echo "numéros déjà existant";
+                            else if (isset($_GET['creation=ok']))
+                                echo "Ajout réussie";
                         ?>
                     </div>
                 </div>
@@ -161,10 +160,10 @@ include("../fragments/menuTech.html");
                 <h3>Inventaire des unités centrales</h3>
 
                 <?php
-                $connect = mysqli_connect("192.168.25.15", "root", "sea2025","!sea2025!", "users");
-                $bd = mysqli_select_db($connect, "users");
-                $sql = "SELECT * FROM Devices";
-                $result = mysqli_query($connect, $sql);
+                    $connect = mysqli_connect("192.168.25.15", "root", "sae2025","!sae2025!", "users");
+                    $bd = mysqli_select_db($connect, "users");
+                    $sql = "SELECT * FROM Devices";
+                    $result = mysqli_query($connect, $sql);
                 ?>
 
                 <table id="unitéesCentrales">
@@ -187,13 +186,13 @@ include("../fragments/menuTech.html");
                         <th>Date fin garantis</th>
                     </tr>
                     <?php
-                    while ($ligne = mysqli_fetch_array($result)) {
-                        echo "<tr>";
-                        foreach ($ligne as $value){
-                            echo "<td>".$value."</td>";
+                        while ($ligne = mysqli_fetch_array($result)) {
+                            echo "<tr>";
+                            foreach ($ligne as $value){
+                                echo "<td>".$value."</td>";
+                            }
+                            echo "</tr>";
                         }
-                        echo "</tr>";
-                    }
                     ?>
 
                 </table>
@@ -230,3 +229,4 @@ include("../fragments/menuTech.html");
 mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
+<?php
