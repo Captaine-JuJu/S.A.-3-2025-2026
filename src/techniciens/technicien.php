@@ -1,12 +1,22 @@
 <?php
 include("../fragments/headers.html");
+
 ?>
     <header>
         <h1>Gestion</h1>
     </header>
-<?php
-include("../fragments/menuTech.html");
-?>
+    <?php
+    include("../fragments/menuTech.html");
+    ?>
+    <?php
+    include_once("../connexion.php");
+
+    $sqlFab = "SELECT * FROM fabriquant";
+    $sqlOS = "SELECT * FROM os";
+
+    $resultFab = mysqli_query($connect, $sqlFab);
+    $resultOS = mysqli_query($connect, $sqlOS);
+    ?>
     <div id="container">
         <div id="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
@@ -19,15 +29,22 @@ include("../fragments/menuTech.html");
                                 <tr>
                                     <td>
                                         <label>Nom :
-                                            <input type="text" name="nom" id="nom"></label>
+                                            <input type="text" name="nomUC" id="nomUC"></label>
                                     </td>
                                     <td>
                                         <label>N° Serie :
-                                            <input type="number" name="nSerieUC" id="nSerieUC"></label>
-                                    </td>
+                                            <input type="text" name="nSerieUC" id="nSerieUC"></label>
+				    </td>
                                     <td>
-                                        <label>Fabricant :
-                                            <input type="text" name="fabricantUC" id="fabricantUC"></label>
+                                        <label>Fabricant : </label>
+                                            <select name="fabricant" id="fabricantUC">
+                                                <option value=""> Choisissez une option </option>
+                                                <?php
+                                                while ($ligne = mysqli_fetch_row($resultFab)) {
+                                                    echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
+						}
+                                                ?>
+                                            </select>
                                     </td>
                                     <td>
                                         <label>Model :
@@ -54,8 +71,15 @@ include("../fragments/menuTech.html");
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>OS :
-                                            <input type="text" name="OSUC" id="OSUC"></label>
+                                        <label>OS : </label>
+                                        <select name="OS" id="OSUC">
+                                            <option value=""> Choisissez une option </option>
+                                            <?php
+                                            while ($ligne = mysqli_fetch_row($resultOS)) {
+                                                echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
+					    }
+                                            ?>
+                                        </select>
                                     </td>
                                     <td>
                                         <label>Domaine :
@@ -89,7 +113,7 @@ include("../fragments/menuTech.html");
                                     </td>
                                 </tr>
                             </table>
-                            <input type="submit" value="Ajouter" name="OK">
+                            <input type="submit" value="AjouterUC" name="OK">
                         </form>
                     </div>
 
@@ -160,10 +184,8 @@ include("../fragments/menuTech.html");
                 <h3>Inventaire des unités centrales</h3>
 
                 <?php
-                    $connect = mysqli_connect("localhost", "root", "azerty", "users");
-                    $bd = mysqli_select_db($connect, "users");
-                    $sql = "SELECT * FROM Devices";
-                    $result = mysqli_query($connect, $sql);
+                    	$sql = "SELECT * FROM Devices";
+			$result = mysqli_query($connect, $sql);
                 ?>
 
                 <table id="unitéesCentrales">
@@ -186,7 +208,7 @@ include("../fragments/menuTech.html");
                         <th>Date fin garantis</th>
                     </tr>
                     <?php
-                        while ($ligne = mysqli_fetch_array($result)) {
+                        while ($ligne = mysqli_fetch_row($result)) {
                             echo "<tr>";
                             foreach ($ligne as $value){
                                 echo "<td>".$value."</td>";
@@ -198,8 +220,8 @@ include("../fragments/menuTech.html");
                 </table>
                 <h3>Inventaire des écrans</h3>
                 <?php
-                $sql = "SELECT * FROM Monitors";
-                $result = mysqli_query($connect, $sql);
+                	$sql = "SELECT * FROM Monitors";
+                	$result = mysqli_query($connect, $sql);
                 ?>
                 <table>
                     <tr>
@@ -212,7 +234,7 @@ include("../fragments/menuTech.html");
                         <th>Support</th>
                     </tr>
                     <?php
-                    while ($ligne = mysqli_fetch_array($result)) {
+                    while ($ligne = mysqli_fetch_row($result)) {
                         echo "<tr>";
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
@@ -230,3 +252,19 @@ mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
 <?php
+//include("techniciens.html");
+//session_start();
+//if(isset($_SESSION['login'])){
+//    $login = $_SESSION['login'];
+//    if ($_SESSION['login']=="admin"){
+//        echo"bonjour Administrateur";
+//        echo "<br>";
+//    }else{
+//        echo"bonjour $login";
+//        echo "<br>";
+//    }
+//
+//    echo "<a href='logout.php'>logout </a>";
+//} else {
+//    header("location:login.php?error");
+//}

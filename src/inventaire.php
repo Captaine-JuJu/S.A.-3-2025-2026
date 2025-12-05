@@ -1,11 +1,11 @@
 <?php
-include("fragments/headers.html");
+    include("fragments/headers.html");
 ?>
 <header>
     <h1>Gestion</h1>
 </header>
 <?php
-include("fragments/menu.html");
+    include("fragments/menu.html");
 ?>
 <div id="container">
     <div id="inventaires">
@@ -15,11 +15,10 @@ include("fragments/menu.html");
             <h3>Inventaire des unités centrales</h3>
 
             <?php
-            $connect = mysqli_connect("192.168.25.15", "root", "sea2025","!sea2025!", "users");
-            //$connect = mysqli_connect("localhost", "root", "");
-            $bd = mysqli_select_db($connect, "users");
-            $sql = "SELECT * FROM Devices";
-            $result = mysqli_query($connect, $sql);
+                $connect = mysqli_connect("localhost", "root", "azerty","users");
+                $bd = mysqli_select_db($connect, "users");
+                $sql = "SELECT * FROM Devices";
+                $result = mysqli_query($connect, $sql);
             ?>
 
             <table id="unitéesCentrales">
@@ -42,20 +41,20 @@ include("fragments/menu.html");
                     <th>Date fin garantis</th>
                 </tr>
                 <?php
-                while ($ligne = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    foreach ($ligne as $value){
-                        echo "<td>".$value."</td>";
+                    while ($ligne = mysqli_fetch_row($result)) {
+                        echo "<tr>";
+                        foreach($ligne as $value){
+                        	echo "<td>".$value."</td>";
+                        }
+                        echo "</tr>";
                     }
-                    echo "</tr>";
-                }
                 ?>
 
             </table>
             <h3>Inventaire des écrans</h3>
             <?php
-            $sql = "SELECT * FROM Monitors";
-            $result = mysqli_query($connect, $sql);
+                $sql = "SELECT * FROM Monitors";
+                $result = mysqli_query($connect, $sql);
             ?>
             <table>
                 <tr>
@@ -68,7 +67,7 @@ include("fragments/menu.html");
                     <th>Support</th>
                 </tr>
                 <?php
-                while ($ligne = mysqli_fetch_array($result)) {
+                while ($ligne = mysqli_fetch_row($result)) {
                     echo "<tr>";
                     foreach ($ligne as $value){
                         echo "<td>".$value."</td>";
@@ -81,7 +80,7 @@ include("fragments/menu.html");
     </div>
 </div>
 <?php
-//Fermeture base de donnée
-mysqli_close($connect);
-include("fragments/footers.html");
+    //Fermeture base de donnée
+    mysqli_close($connect);
+    include("fragments/footers.html");
 ?>
