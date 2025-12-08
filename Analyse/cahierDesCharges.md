@@ -46,5 +46,5 @@ Compétences nécessaires :
 
 **Priorités :**
 
-La priorité est de produire un site web statique afin d'avoir un aperçu de l'interface de la platform.
+La priorité est de produire un site web statique afin d'avoir un aperçu de l'interface de la platforme.
 
