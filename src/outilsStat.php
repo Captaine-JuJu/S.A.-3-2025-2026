@@ -7,10 +7,22 @@ function moyenne($list){
 
 function topUtilisateur($list){
 
-    // Trie de la liste
-    arsort($list, SORT_STRING);
-
-    for ($i=0; $i<count($list); $i++){
-
+    if (empty($list)) {
+        return null;
     }
+
+    // Trie de la liste
+    $compteur = array_count_values($list);
+    arsort($compteur, SORT_STRING);
+
+    return key($compteur);
+}
+
+function topTempsConnection($list){
+    if (empty($list)) {
+        return null;
+    }
+
+
+
 }

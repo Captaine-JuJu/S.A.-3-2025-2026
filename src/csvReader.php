@@ -16,6 +16,6 @@ while(($resultA = fgetcsv($fp)) !== false) {
 
 }
 
-
+echo topUtilisateur($listUtilisateur);
 
 fclose($fp);
