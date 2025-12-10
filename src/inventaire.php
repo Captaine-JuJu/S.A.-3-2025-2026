@@ -15,8 +15,8 @@ include("fragments/menu.html");
             <h3>Inventaire des unités centrales</h3>
 
             <?php
-            $connect = mysqli_connect("192.168.25.15", "root", "sea2025","!sea2025!", "users");
-            //$connect = mysqli_connect("localhost", "root", "");
+            $connect = mysqli_connect("localhost", "root", "azerty", "users");
+
             $bd = mysqli_select_db($connect, "users");
             $sql = "SELECT * FROM Devices";
             $result = mysqli_query($connect, $sql);
@@ -42,7 +42,7 @@ include("fragments/menu.html");
                     <th>Date fin garantis</th>
                 </tr>
                 <?php
-                while ($ligne = mysqli_fetch_array($result)) {
+                while ($ligne = mysqli_fetch_row($result)) {
                     echo "<tr>";
                     foreach ($ligne as $value){
                         echo "<td>".$value."</td>";
@@ -68,7 +68,7 @@ include("fragments/menu.html");
                     <th>Support</th>
                 </tr>
                 <?php
-                while ($ligne = mysqli_fetch_array($result)) {
+                while ($ligne = mysqli_fetch_row($result)) {
                     echo "<tr>";
                     foreach ($ligne as $value){
                         echo "<td>".$value."</td>";
