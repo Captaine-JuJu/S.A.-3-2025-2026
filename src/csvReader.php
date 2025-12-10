@@ -1,14 +1,21 @@
 <?php
-$filename = "connections.csv";
 
-$fp = fopen($filename, "r");
+include_once("outilsStat.php");
+
+$fp = fopen("données/connections.csv", "r");
 
 $listConnection = array();
+$listUtilisateur = array();
 
-while($resultA = fgetcsv($fp)){
-    foreach ($resultA as $value) {
-        echo $value;
-        $listConnection[] = $value;
-    }
-    fclose($fp);
+fgetcsv($fp);
+
+while(($resultA = fgetcsv($fp)) !== false) {
+
+    $listUtilisateur[] = $resultA[0];
+    $listConnection[] = $resultA[2];
+
 }
+
+
+
+fclose($fp);
