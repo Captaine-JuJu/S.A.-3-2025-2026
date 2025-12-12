@@ -42,8 +42,13 @@ while(($resultA = fgetcsv($fp)) !== false) {
 $proba_de_tombe_sur_un_hors_garantie =cacul_pourcentage($hors_garantie,$hors_garantie+$sous_garantie,100);
 
 $repartition_filiere = array_count_values($filiere);
+$max_filiere = max($repartition_filiere);
+
 $repartition_cpu = array_count_values($cpu);
+$max_cpu = max($repartition_cpu);
+
 $repartition_room = array_count_values($room);
+$max_room = max($repartition_room);
 
 
 
