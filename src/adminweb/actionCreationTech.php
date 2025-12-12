@@ -28,10 +28,10 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Ajouter"])) {
         while ($ligne = mysqli_fetch_row($result)) {
             // verification de l'identifiant en comparant aux données de la table user
             if ($login == $ligne[0]) {
-		mysqli_close($connect);
-		header("location: ajoutTech.php?creation=deja_existent");
-		}
-	}
+                mysqli_close($connect);
+                header("location: ajoutTech.php?creation=deja_existent");
+                }
+            }
             $sqlc = "INSERT INTO user VALUES ('$login', '$mdp', 'Techniciens')";
 
             //envoie de la requete à la base de donnée

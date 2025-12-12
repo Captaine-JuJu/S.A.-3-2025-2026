@@ -1,6 +1,6 @@
 <?php
 print_r($_POST);
-include_("../connexion.php");
+include_once("../connexion.php");
 if(isset($_POST["nSerieE"], $_POST["connecteurE"])){
 
     $fabricant = $_POST["fabricantE"];

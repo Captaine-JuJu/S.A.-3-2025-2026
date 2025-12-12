@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <title>Sae</title>
     <script src="statistiques.js"></script>
-</head>
+</head> -->
+<?php
+include("../fragments/headers.html");
+?>
 <body>
 
 <header>
@@ -13,22 +16,52 @@
 </header>
 <?php
 include("../fragments/menu.html");
+include_once("outilsStat.php");
+include_once("../connexion.php");
 ?>
 
 
 <div id="StatistiqueUC">
     <h2>Unité centrale</h2>
     <?php
-    include_once("../outilsStat.php");
-    function cacul_pourcentage($nombre,$total,$pourcentage)
-    {
-        $resultat = ($nombre/$total) * $pourcentage;
-        return round($resultat); // Arrondi la valeur
+
+    $sql = "SELECT fabricant, COUNT(*) as nbr FROM Monitors GROUP BY fabricant;";
+    $result = mysqli_query($connect, $sql);
+
+    while ($row = mysqli_fetch_row($result)) {
+        echo "Fabricant : ". $row[0];
+        echo " Nombre Machine : ".$row[1]."<br>";
     }
 
+    $sql = "SELECT fabricant, COUNT(*) as nbr FROM Devices GROUP BY fabricant;";
+    $result = mysqli_query($connect, $sql);
 
-    $fp = fopen("../données/Inventory_devices.csv", "r");
+    while ($row = mysqli_fetch_row($result)) {
+        echo "Fabricant : ". $row[0];
+        echo " Nombre Machine : ".$row[1]."<br>";
+    }
+
+    $sql = "SELECT OS, COUNT(*) as nbr FROM Devices GROUP BY OS;";
+
+    $result = mysqli_query($connect, $sql);
+
+    while ($row = mysqli_fetch_row($result)) {
+        echo "OS : ". $row[0];
+        echo " Nombre Machine : ".$row[1]."<br>";
+    }
+
+    $sql = "SELECT Localisation, COUNT(*) as nbr FROM Devices GROUP BY Localisation;";
+
+    $result = mysqli_query($connect, $sql);
+
+    while ($row = mysqli_fetch_row($result)) {
+        echo "Localisation : ". $row[0];
+        echo " Nombre de machine : ".$row[1]."<br>";
+    }
+
+    $fp = fopen("../données/inventory_devices.csv", "r");
     date_default_timezone_set('Europe/Berlin');
+
     $sous_garantie = 0;
     $hors_garantie = 0;
     $filiere = array();
@@ -45,15 +78,18 @@ include("../fragments/menu.html");
 //        }
 //        else{$hors_garantie++;}
 
+        // Domaine
         $filiere[] = $resultA[9];
 
+        //
         $room[] = $resultA[13];
 
+        //
         $cpu[] = $resultA[6];
     }
 
-//    $proba_de_tombe_sur_un_hors_garantie =cacul_pourcentage($hors_garantie,$hors_garantie+$sous_garantie,100);
-//    echo $proba_de_tombe_sur_un_hors_garantie."<br>";
+//  $proba_de_tombe_sur_un_hors_garantie =cacul_pourcentage($hors_garantie,$hors_garantie+$sous_garantie,100);
+//  echo $proba_de_tombe_sur_un_hors_garantie."<br>";
 
     $repartition_filiere = array_count_values($filiere);
     $max_filiere = max($repartition_filiere);
@@ -73,10 +109,10 @@ include("../fragments/menu.html");
 
 
 <div id="StatistiqueE">
-    <h2>Ecrant</h2>
+    <h2>Ecran</h2>
     <?php
 
-    $fpIM = fopen("../données/Inventory_monitors2.csv", "r");
+    $fpIM = fopen("../données/inventory_monitors2.csv", "r");
 
 
     $Connectiques = array();
@@ -119,7 +155,7 @@ include("../fragments/menu.html");
 <div id="StatistiqueC">
     <h2>Connection</h2>
     <?php
-    include_once("../outilsStat.php");
+    include_once("outilsStat.php");
     $fp = fopen("../données/connections.csv", "r");
 
     $listConnection = array();

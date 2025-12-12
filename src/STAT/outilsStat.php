@@ -30,6 +30,11 @@ function topUtilisateur($list){
     return key($compteur);
 }
 
+function cacul_pourcentage($nombre ,$total ,$pourcentage ){
+    $resultat = ($nombre/$total) * $pourcentage;
+    return round($resultat); // Arrondi la valeur
+}
+
 function maxTemps($list){
     $maxUser = "";
     $maxTemps = 0;
