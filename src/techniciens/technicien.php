@@ -24,7 +24,7 @@ include("../fragments/headers.html");
                 <div id="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
                     <div id="ajoutUC">
-                        <form method="POST" action="actionAjout.php">
+                        <form method="POST" action="actionAjoutUC.php">
                             <table role="presentation">
                                 <tr>
                                     <td>
@@ -37,7 +37,7 @@ include("../fragments/headers.html");
 				    </td>
                                     <td>
                                         <label>Fabricant : </label>
-                                            <select name="fabricant" id="fabricantUC">
+                                            <select name="fabricantUC" id="fabricantUC">
                                                 <option value=""> Choisissez une option </option>
                                                 <?php
                                                 while ($ligne = mysqli_fetch_row($resultFab)) {
@@ -61,18 +61,18 @@ include("../fragments/headers.html");
                                             <input type="text" name="CPUUC" id="CPUUC"></label>
                                     </td>
                                     <td>
-                                        <label>RAM :
+                                        <label>RAM (Go) :
                                             <input type="text" name="RAMUC" id="RAMUC"></label>
                                     </td>
                                     <td>
-                                        <label>Stockage :
+                                        <label>Stockage (Go) :
                                             <input type="text" name="stockageUC" id="stockageUC"></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <label>OS : </label>
-                                        <select name="OS" id="OSUC">
+                                        <select name ="OSUC" id="OSUC">
                                             <option value=""> Choisissez une option </option>
                                             <?php
                                             while ($ligne = mysqli_fetch_row($resultOS)) {
@@ -120,12 +120,12 @@ include("../fragments/headers.html");
                     <h3>Ajout Ecran</h3>
                     <div id="ajoutEcran">
 
-                        <form method="POST" action="actionAjout.php">
+                        <form method="POST" action="actionAjoutE.php">
                             <table role="presentation">
                                 <tr>
                                     <td>
                                         <label>N° série :
-                                            <input type="number" name="nSerieE" id="nSerieE"></label>
+                                            <input type="text" name="nSerieE" id="nSerieE"></label>
                                     </td>
                                     <td>
                                         <label>Fabricant :

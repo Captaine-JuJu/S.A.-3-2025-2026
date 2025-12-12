@@ -5,7 +5,7 @@ html {
 }
 
 body{
-    background-color: #aef3ae;
+    background-color: #2396a4;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -13,7 +13,7 @@ body{
 }
 
 header{
-    background-color: darkcyan;
+    background-color:#124456;
     padding: 20px;
     margin-bottom: 0;
     width: 100%;
@@ -23,7 +23,7 @@ header{
 
 nav {
     background-color: whitesmoke;
-    color: darkcyan;
+    color: #2BCAC9;
     padding: 0;
     top: 0;
     width: 100%;
@@ -166,3 +166,22 @@ label{
 
 }
 
+#statistiques h2{
+    display: flex;
+    justify-content: center;
+}
+
+#statistiques{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    width: 90%;
+    padding-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#statistiques label{
+    margin: 10px

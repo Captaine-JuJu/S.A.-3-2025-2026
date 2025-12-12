@@ -25,15 +25,17 @@ if(isset($_POST["nomUC"], $_POST["nSerieUC"])){
 
     $result = mysqli_query($connect, $sqlVerif);
     $requete = "INSERT INTO Devices VALUES ('$nom', '$nSerieUC', '$fabriquant', '$model', '$type', '$cpu', '$ram', '$stockage', '$OS', '$Domaine', '$Localisation', '$batiment', '$pieces', '$mac_addr', '$date_achat', '$date_fin');";
-  //Si le numéro de série n'est pas déjà dans la bdd
+    //Si le numéro de série n'est pas déjà dans la bdd
     while($row = mysqli_fetch_row($result)){
         if($row[0] == $nom || $row[1] == $nSerieUC){
-
             header("location: technicien.php?creation=deja_existent");
             exit(0);
         }
     }
+    echo("ok");
     $ajout = mysqli_query($connect, $requete);
+    mysqli_close($connect);
     header("location: technicien.php");
 }
-//header("location: technicien.php?error");
+mysqli_close($connect);
+header("location: technicien.php?error");
