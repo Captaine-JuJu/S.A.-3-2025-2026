@@ -7,7 +7,6 @@ $fp = fopen("./données/connections.csv", "r");
 $listConnection = array();
 $listUtilisateur = array();
 
-
 fgetcsv($fp);
 
 while(($resultA = fgetcsv($fp)) !== false) {
@@ -17,11 +16,7 @@ while(($resultA = fgetcsv($fp)) !== false) {
 
 }
 
-//foreach ($listUtilisateur as $utilisateur) {
-//    echo $utilisateur . "<br>";
-//}
-
-//echo topUtilisateur($listUtilisateur);
 echo topTempsConnection($listUtilisateur, $listConnection);
 
 fclose($fp);
+?>

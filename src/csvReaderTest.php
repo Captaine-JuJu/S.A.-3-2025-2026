@@ -33,6 +33,4 @@ $a = tempsConnectionParUtlistateur($listUtilisateur, $listConnection);
 
 
 
-
-
 fclose($fp);
