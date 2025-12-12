@@ -3,9 +3,7 @@
 print_r($_POST);
 
 // connexion au a la base de donnée
-$connect = mysqli_connect("localhost", "root", "azerty", "users");
-
-$bd = mysqli_select_db($connect, "users");
+include_once("connexion.php");
 
 // verification des données du formulaire
 if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
