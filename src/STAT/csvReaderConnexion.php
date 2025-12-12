@@ -2,10 +2,11 @@
 
 include_once("outilsStat.php");
 
-$fp = fopen("données/connections.csv", "r");
+$fp = fopen("./données/connections.csv", "r");
 
 $listConnection = array();
 $listUtilisateur = array();
+
 
 fgetcsv($fp);
 
@@ -16,6 +17,11 @@ while(($resultA = fgetcsv($fp)) !== false) {
 
 }
 
-echo topUtilisateur($listUtilisateur);
+//foreach ($listUtilisateur as $utilisateur) {
+//    echo $utilisateur . "<br>";
+//}
+
+//echo topUtilisateur($listUtilisateur);
+echo topTempsConnection($listUtilisateur, $listConnection);
 
 fclose($fp);
