@@ -70,7 +70,7 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 
 <ins>Scénario alternatif :</ins> Identifiant déjà pris
 	
-* L'administrateur crée un nouveau profil technicien en ajoutant un nouvel identifiant associé à un nouveau mot de passe.
+* L'administrateur créer un nouveau profil technicien en ajoutant un nouvel identifiant associé à un nouveau mot de passe.
 * Un message d’erreur apparaît, l’identifiant est déjà utilisé ou le format des informations ne sont pas valide.
 * Le nouveaux profil n’apparait pas dans l’interface.
 
@@ -80,17 +80,20 @@ Les définitions suivantes se rapportent à des termes employé dans le cahier d
 **Niveau :** Nuage \
 **Acteur principaux :** Visiteur
 
-<ins>Précondition :</ins>
-* Le visiteur se connecte au site et consulte une partie de l’inventaire.
+<ins>Scénario nominal :</ins>
+1. Le visiteur consulte la totalité de l'inventaire.
+
+\
+**Nom :** Cas d'utilisation métier : Consultation des statistiques \
+**Portée :** Boite noire \
+**Niveau :** Nuage \
+**Acteur principaux :** Visiteur
 
 <ins>Scénario nominal :</ins>
-1. Le visiteur s’identifie en renseignant son identifiant et son mot de passe pour passer en technicien.
-2. Le visiteur consulte la totalité de l'inventaire.
+1. Le visiteur accède à la page d'acceuil
+2. Le visiteur accède à l'onglet statistique
+3. Le visiteur consulte les données statistiques de la platforme
 
-<ins>Scénario alternatif :</ins> Mot de passe ou identifiant invalide
-* Le visiteur ne parvient pas à s’identifier
-* Un message d'erreur apparaît.
-* Le visiteur n'acquiert aucun droit supplémentaire.
 
 ## Technologie employée
 
