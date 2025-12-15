@@ -59,7 +59,7 @@ include_once("../connexion.php");
         echo " Nombre de machine : ".$row[1]."<br>";
     }
 
-    $fp = fopen("../données/inventory_devices.csv", "r");
+    $fp = fopen("données/inventory_devices.csv", "r");
     date_default_timezone_set('Europe/Berlin');
 
     $sous_garantie = 0;
@@ -71,12 +71,6 @@ include_once("../connexion.php");
     fgetcsv($fp);
 
     while(($resultA = fgetcsv($fp)) !== false) {
-
-//        $WARRANTY_END = date($resultA[16]);
-//        if ($WARRANTY_END<date_default_timezone_get()){
-//            $sous_garantie++;
-//        }
-//        else{$hors_garantie++;}
 
         // Domaine
         $filiere[] = $resultA[9];
@@ -112,7 +106,7 @@ include_once("../connexion.php");
     <h2>Ecran</h2>
     <?php
 
-    $fpIM = fopen("../données/inventory_monitors2.csv", "r");
+    $fpIM = fopen("données/inventory_monitors2.csv", "r");
 
 
     $Connectiques = array();
