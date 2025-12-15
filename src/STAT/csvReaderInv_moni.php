@@ -2,7 +2,7 @@
 
 include_once("outilsStat.php");
 
-$fp = fopen("./données/Inventory_monitors2.csv", "r");
+$fpIM = fopen("./données/Inventory_monitors2.csv", "r");
 
 
 $Connectiques = array();
@@ -10,9 +10,9 @@ $MANUFACTURER = array();
 $SIZE_INCH = array();
 $RESOLUTION = array();
 
-fgetcsv($fp);
+fgetcsv($fpIM);
 
-while(($resultA = fgetcsv($fp)) !== false) {
+while(($resultA = fgetcsv($fpIM)) !== false) {
 
     $Connectiques=$resultA[6];
     $MANUFACTURER=$resultA[2];
@@ -33,4 +33,4 @@ $max_size_inch = max($repartition_SIZE_INCH);
 $repartition_RESOLUTION = array_count_values($RESOLUTION);
 $max_resolution = max($repartition_RESOLUTION);
 
-fclose($fp);
+fclose($fpIM);

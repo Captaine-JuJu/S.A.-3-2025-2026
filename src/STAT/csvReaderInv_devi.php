@@ -1,5 +1,4 @@
 <?php
-
 function cacul_pourcentage($nombre,$total,$pourcentage)
 {
     $resultat = ($nombre/$total) * $pourcentage;
@@ -50,6 +49,5 @@ $max_cpu = max($repartition_cpu);
 $repartition_room = array_count_values($room);
 $max_room = max($repartition_room);
 
-
-
 fclose($fp);
+?>
