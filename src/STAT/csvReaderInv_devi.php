@@ -38,7 +38,7 @@ while(($resultA = fgetcsv($fp)) !== false) {
     $cpu = $resultA[6];
 }
 
-$proba_de_tombe_sur_un_hors_garantie =cacul_pourcentage($hors_garantie,$hors_garantie+$sous_garantie,100);
+$proba_de_tombe_sur_un_hors_garantie =calcul_pourcentage($hors_garantie,$hors_garantie+$sous_garantie,100);
 
 $repartition_filiere = array_count_values($filiere);
 $max_filiere = max($repartition_filiere);
