@@ -24,7 +24,9 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
     if (mysqli_num_rows($result) == 1 && mysqli_stmt_bind_param($requete, "ss", $login, $mdp)){
         session_start();
         $_SESSION["login"] = $login;
-
+	$date = date('Y-m-d');
+	$sqlLog = "INSERT INTO log VALUES('$login','connexion', '$date');";
+	mysqli_query($connect, $sqlLog);
         while($ligneRole = mysqli_fetch_row($result)){
             // Redirection vers les pages techniciens
             if ($ligneRole[2] == "Techniciens") {

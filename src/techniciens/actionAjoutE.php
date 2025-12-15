@@ -13,7 +13,6 @@ if(isset($_POST["nSerieE"], $_POST["connecteurE"])){
 
     //$connect = mysqli_connect("localhost", "root", "");
     $sqlVerif = "SELECT num_serie FROM Monitors ;";
-
     $result = mysqli_query($connect, $sqlVerif);
     $requete = "INSERT INTO Devices VALUES ('$nSerie', '$fabricant', '$modele', '$taille', '$reso', '$connecteur', '$support');";
   //Si le numéro de série n'est pas déjà dans la bdd
