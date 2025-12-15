@@ -60,6 +60,8 @@ include_once("connexion.php");
         echo " Nombre de machine : ".$row[1]."<br>";
     }
     ?>
+
+
 </div>
 
 
