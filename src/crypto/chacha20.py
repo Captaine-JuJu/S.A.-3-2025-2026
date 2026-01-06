@@ -4,6 +4,10 @@ import algorithms
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms
 from cryptography.hazmat.backends import default_backend
 
+class Chacha20:
+    def __init__(self):
+        print("ok")
+
 
 class Chacha20AvecBibli:
 
