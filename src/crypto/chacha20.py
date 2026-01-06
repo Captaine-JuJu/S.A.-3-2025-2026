@@ -3,12 +3,14 @@ import os
 
 class Chacha20:
 
-    def __init__(self, key: bytes = None, nonce: bytes = None, message: str = None):
+    def __init__(self, message: str, key: bytes = None, nonce: bytes = None):
         self.key = key
         self.nonce = nonce
         self.message = message
         if self.key is None:
             self.key = os.urandom(256)
+        if self.nonce is None:
+            self.nonce = os.urandom(96)
 
 
     def set_message(self, message: str):
@@ -21,3 +23,10 @@ class Chacha20:
         else:
             self.nonce = nonce
         return
+
+    def cryptage_chacha20(self):
+        print("CHACHA")
+
+
+if __name__ == "__main__":
+    chacha = Chacha20("salut")
