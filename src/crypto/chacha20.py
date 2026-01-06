@@ -30,12 +30,14 @@ class Chacha20AvecBibli:
         """Redéfinit le message à chiffrer"""
         self.message = new_message
 
+
     def set_nonce(self, nonce: bytes = None):
         """Redéfinit le nonce"""
         if nonce is None:
             self.nonce = os.urandom(96).hex()
         else:
             self.nonce = nonce
+
 
     def cryptage_chacha20(self):
         """Crypte un message en chacha20"""
@@ -63,6 +65,7 @@ class Chacha20AvecBibli:
         message_claire = decrypt.update(message_chiffre) + decrypt.finalize()
 
         return message_claire.decode('utf-8')
+
 
 
 if __name__ == "__main__":
