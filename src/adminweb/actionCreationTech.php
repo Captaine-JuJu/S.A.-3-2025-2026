@@ -6,10 +6,15 @@ print_r($_POST);
 include_once("../connexion.php");
 
 // verification des données du formulaire
-if (isset($_POST["login"], $_POST["mdp"], $_POST["Ajouter"])) {
+if (isset($_POST["login"], $_POST["mdp"], $_POST["mdpVerif"], $_POST["Ajouter"])) {
     $login = $_POST["login"];
     $mdp = $_POST["mdp"];
+    $mdpVerif = $_POST["mdpVerif"];
     print_r($_POST["login"]);
+
+    if ($mdp !== $mdpVerif) {
+        header("location: ajoutTech.php?error");
+    }
 
     // requete SQL sur la table user
     $sql = "SELECT * FROM user";
