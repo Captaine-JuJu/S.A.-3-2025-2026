@@ -18,7 +18,7 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
 
     $result = mysqli_stmt_get_result($sqlp);
 
-    // verification de l'identifiant et du mot de passe en comparant aux données de la table user
+    //recupere la ligne associé au login et au mot de passe
     if ($user = mysqli_fetch_assoc($result)) {
         session_start();
         $_SESSION["login"] = $user["login"];

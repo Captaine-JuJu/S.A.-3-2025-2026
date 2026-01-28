@@ -1,5 +1,10 @@
 <?php
+require_once("../authen.php");
+authentification("ADMIN_WEB");
+?>
+<?php
 include("../fragments/headers.html");
+include("../accesDenied.php");
 ?>
 <header>
     <h1>Accueil</h1>
