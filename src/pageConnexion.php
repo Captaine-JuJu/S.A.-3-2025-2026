@@ -19,6 +19,8 @@ include("fragments/menu.html");
         <?php
         if (isset($_GET['error']))
             echo "Connexion échoué";
+        if(isset($_GET['nonConnecte']))
+	    echo "Vous n'êtes pas connecté";
         ?>
     </div>
 <?php

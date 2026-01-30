@@ -1,52 +1,47 @@
 <?php
-
-print_r($_POST);
-
 // connexion a la base de donnée
-include_once("../connexion.php");
+include("../connexion.php");
 
 // verification des données du formulaire
-if (isset($_POST["login"], $_POST["mdp"], $_POST["mdpVerif"], $_POST["Ajouter"])) {
+if (isset($_POST["login"], $_POST["mdp"], $_POST["mdpVerif"])) {
     $login = $_POST["login"];
     $mdp = $_POST["mdp"];
     $mdpVerif = $_POST["mdpVerif"];
-    print_r($_POST["login"]);
 
-    if ($mdp !== $mdpVerif) {
-        header("location: ajoutTech.php?error");
+    $sql = "SELECT login FROM user WHERE login=?";
+    $sqlp = mysqli_prepare($connect, $sql);
+    mysqli_stmt_bind_param($sqlp, 's', $login);
+    mysqli_stmt_execute($sqlp);
+    mysqli_stmt_store_result($sqlp);
+    if(mysqli_stmt_num_rows($sqlp) >= 1){
+        header("location: ajoutTech.php?deja_existent");
+        exit();
+    }
+    mysqli_stmt_close($sqlp);
+
+    if(strlen($mdp) < 5){
+        header("location: ajoutTech.php?mdp_trop_court");
+        exit();
     }
 
-    // requete SQL sur la table user
-    $sql = "SELECT * FROM user";
-    // requete SQL préparé
-    $sqlp = "SELECT * FROM user WHERE login=?";
+    if($mdp !== $mdpVerif){
+        header("location: ajoutTech.php?mdp_correspond_pas");
+        exit();
+    }
 
 
-    //envoie de la requete à la base de donnée
-    $result = mysqli_query($connect, $sql);
-    //Prépare requête SQL
-    $requete = mysqli_prepare($connect, $sqlp);
+    $sqla = "INSERT INTO user (login, password, role) VALUES (?, ?, 'Techniciens')";
+    $sqlap = mysqli_prepare($connect, $sqla);
 
-    // Vérifie la conformité de la commande
-    if ( mysqli_stmt_bind_param($requete, "s", $login)) {
-        // lecture ligne par ligne de la table user
-        while ($ligne = mysqli_fetch_row($result)) {
-            // verification de l'identifiant en comparant aux données de la table user
-            if ($login == $ligne[0]) {
-                mysqli_close($connect);
-                header("location: ajoutTech.php?creation=deja_existent");
-                }
-            }
-            $sqlc = "INSERT INTO user VALUES ('$login', '$mdp', 'Techniciens')";
+    mysqli_stmt_bind_param($sqlap, 'ss', $login, $mdp);
 
-            //envoie de la requete à la base de donnée
-            $resultc = mysqli_query($connect, $sqlc);
-
-            mysqli_close($connect);
-
-            header("location: ajoutTech.php?creation=ok");
+    if (mysqli_stmt_execute($sqlap)){
+        mysqli_close($connect);
+        header("location: ajoutTech.php?ajout_reussi");
+        exit();
     }
 }
 //Fermeture de la bd
 mysqli_close($connect);
 header("location: ajoutTech.php?error");
+exit();

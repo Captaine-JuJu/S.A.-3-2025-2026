@@ -5,7 +5,7 @@ if(isset($_POST["nomUC"], $_POST["nSerieUC"])){
 
     $nom = $_POST["nomUC"];
     $nSerieUC = $_POST["nSerieUC"];
-    $fabriquant = $_POST["fabriquantUC"];
+    $fabriquant = $_POST["fabricantUC"];
     $model = $_POST["modelUC"];
     $type = $_POST["typeUC"];
     $cpu = $_POST["CPUUC"];

@@ -30,8 +30,8 @@ function topUtilisateur($list){
     return key($compteur);
 }
 
-function calcul_pourcentage($nombre , $total , $pourcentage ){
-    $resultat = ($nombre/$total) * $pourcentage;
+function cacul_pourcentage($nombre ,$total){
+    $resultat = ($nombre/$total) * 100;
     return round($resultat); // Arrondi la valeur
 }
 

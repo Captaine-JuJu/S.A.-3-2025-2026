@@ -1,4 +1,4 @@
-html {
+xhtml {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -93,6 +93,11 @@ th{
     align-items: center;
     width: 90%;
 
+}
+
+#tech.listetech{
+    justify-content: center;
+    flex-direction: row;
 }
 
 #inventaires{

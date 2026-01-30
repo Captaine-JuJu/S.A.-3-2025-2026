@@ -10,41 +10,37 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
     $login = $_POST["login"];
     $mdp = $_POST["mdp"];
 
-    // requete SQL sur la table user
-    $sql = "SELECT * FROM user WHERE login='$login' AND password='$mdp'";
     // requete SQL préparé
-    $sqlp = "SELECT * FROM user WHERE login=? AND password=?";
+    $sql = "SELECT * FROM user WHERE login=? AND password=?";
+    $sqlp = mysqli_prepare($connect, $sql);
 
-    // envoi de la requete à la base de donnée
-    $result = mysqli_query($connect, $sql);
-    //Prépare requête SQL
-    $requete = mysqli_prepare($connect, $sqlp);
+    mysqli_stmt_bind_param($sqlp, 'ss', $login, $mdp);
+    mysqli_stmt_execute($sqlp);
+
+    $result = mysqli_stmt_get_result($sqlp);
 
     // verification de l'identifiant et du mot de passe en comparant aux données de la table user
-    if (mysqli_num_rows($result) == 1 && mysqli_stmt_bind_param($requete, "ss", $login, $mdp)){
+    if ($user = mysqli_fetch_assoc($result)){
         session_start();
-        $_SESSION["login"] = $login;
+        $_SESSION["login"] = $user["login"];
+        $_SESSION["role"] = $user["role"];
 
-        while($ligneRole = mysqli_fetch_row($result)){
-            // Redirection vers les pages techniciens
-            if ($ligneRole[2] == "Techniciens") {
-                mysqli_close($connect);
-                header("location: techniciens/indexTech.php");
-            }
-            if ($ligneRole[2] == "ADMIN_WEB") {
-                mysqli_close($connect);
-                header("location: adminweb/indexAdminWeb.php");
-            }
-            if ($ligneRole[2] == "ADMIN_SYS") {
-                mysqli_close($connect);
-                header("location: sysadmin/indexAdminSys.php");
-            }
-        }
-        //Fermeture base de donnée
+        $role = $user["role"];
         mysqli_close($connect);
-        exit(0);
-    }
 
+        switch ($role) {
+            case "Techniciens":
+                header("location: techniciens/indexTech.php");
+                break;
+            case "ADMIN_WEB":
+                header("location: adminweb/indexAdminWeb.php");
+                break;
+            case "ADMIN_SYS":
+                header("location: sysadmin/indexAdminSys.php");
+                break;
+        }
+        exit();
+    }
 }
 
 //Fermeture base de donnée

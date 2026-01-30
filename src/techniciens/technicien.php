@@ -1,6 +1,8 @@
 <?php
+require_once("../authen.php");
+authentification("Techniciens");
 include("../fragments/headers.html");
-
+include("../accesDenied.php");
 ?>
     <header>
         <h1>Gestion</h1>

@@ -6,6 +6,7 @@
 </header>
 <?php
     include("fragments/menu.html");
+    include("connexion.php");
 ?>
 <div id="container">
     <div id="inventaires">
@@ -15,8 +16,6 @@
             <h3>Inventaire des unités centrales</h3>
 
             <?php
-                $connect = mysqli_connect("localhost", "root", "azerty","users");
-                $bd = mysqli_select_db($connect, "users");
                 $sql = "SELECT * FROM Devices";
                 $result = mysqli_query($connect, $sql);
             ?>
@@ -41,13 +40,13 @@
                     <th>Date fin garantis</th>
                 </tr>
                 <?php
-                while ($ligne = mysqli_fetch_row($result)) {
-                    echo "<tr>";
-                    foreach ($ligne as $value){
-                        echo "<td>".$value."</td>";
+                    while ($ligne = mysqli_fetch_row($result)) {
+                        echo "<tr>";
+                        foreach($ligne as $value){
+                        	echo "<td>".$value."</td>";
+                        }
+                        echo "</tr>";
                     }
-                    echo "</tr>";
-                }
                 ?>
 
             </table>

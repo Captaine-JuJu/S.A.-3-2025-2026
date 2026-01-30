@@ -1,31 +1,18 @@
 <?php
-include_once("connexion.php");
+$query = "LOAD DATA INFILE 'données/inventory_devices.csv' INTO TABLE Devices Fields BY ',' ENCLOSED BY '""' LINES TERMINATED BY '\n' IGNORE 1 ROW;"
+$connect = mysqli_connect("localhost", "root","azerty","users");
+$bd = mysqli_select_db($connect, "users");
 $fp = fopen("données/inventory_devices.csv", "r");
-echo "test";
 fgetcsv($fp);
-//$requeteUC = $connect->prepare("INSERT INTO Devices VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-//$prepUC->bind_param("sis", $nom, $nSerieUC,$fabriquant, $model, $type,$cpu,$ram,$stockage,$OS,$domaine,$localisation,$batiment,$pieces,$mac_addr,$date_achat,$date_garantis);
+$requeteUC = $connect->prepare("INSERT INTO Devices(Nom,Num_serie) VALUES (?,?);");
+$prepUC->bind_param("sis", $nom, $nSerieUC);
 
-//while (($data = fgetcsv($fp) !== FALSE) {
-//    $nom = $data[0];
-//    $nSerieUC = $data[1];
-//    $fabriquant = $data[2];
-//    $model = $data[3];
-//    $type = $data[4];
-//    $cpu = $data[5];
-//    $ram = $data[6];
-//    $stockage = $data[7];
-//    $OS = $data[8];
-//    $domaine = $data[9];
-//    $localisation = $data[10];
-//    $batiment = $data[11];
-//    $pieces = $data[12];
-//    $mac_addr = $data[13];
-//    $date_achat = $data[14];
-//    $date_garantis = $data[15];
-//
-//    //$prepUC->execute();
-//}
+while (($data = fgetcsv($fp) !== FALSE) {
+    $nom = $data[0];
+    $nSerieUC = $data[1];
+    
+    $prepUC->execute();
+}
 echo "réussi... ou pas";
-//$prepUC->close();
+$prepUC->close();
 fclose($fp);
