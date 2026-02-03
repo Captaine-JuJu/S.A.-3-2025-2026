@@ -1,4 +1,4 @@
-xhtml {
+html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -84,7 +84,7 @@ th{
 
 
 
-#presentation{
+#presentation, .presentation{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -95,19 +95,21 @@ th{
 
 }
 
-#tech.listetech{
+.tech{
+    display: inline-flex;
     justify-content: center;
-    flex-direction: row;
+    width: 100%;
+    margin: 2%;
 }
 
-#inventaires{
+#inventaires, .clinventaires{
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: whitesmoke;
     border-radius: 10px;
     align-items: center;
-    width: 90%;
+    width: 100%;
     padding-bottom: 20px;
     position: relative;
     overflow: hidden;
@@ -119,17 +121,16 @@ th{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 60vh;
+    min-height: 40vh;
 }
 
-#connexion{
-    display: flex;
+#connexion, .connexion, .bg-connexion{
     background-color: whitesmoke;
     border-radius: 10px;
     padding: 30px;
     justify-content: center;
-    width: 25%;
     align-items: center;
+    margin:0 3%;
 
 }
 
@@ -188,5 +189,6 @@ label{
     overflow: hidden;
 }
 
-#statistiques label{
+#statistiques label {
     margin: 10px
+}

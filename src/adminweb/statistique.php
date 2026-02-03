@@ -1,7 +1,7 @@
 <?php
 require_once("../authen.php");
 authentification("ADMIN_WEB");
-	include("../fragments/headers.html");
+include("../fragments/headers.html");
 include("../accesDenied.php");
 ?>
 <body>
