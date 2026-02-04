@@ -33,7 +33,12 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
         date_default_timezone_set("Europe/Paris");
         $date = date("d/m/Y H:i:s");
 
-        //$sqllog = "INSERT INTO log VALUES ('$role', '$login', $date)";
+        $sqllog = "INSERT INTO log VALUES ('$login', '$role', $date)";
+        $sqlplog = mysqli_prepare($connect, $sqllog);
+        mysqli_stmt_bind_param($sqlplog, 'sss', $login, $role, $date);
+        mysqli_stmt_execute($sqlplog);
+
+
 
 
 
