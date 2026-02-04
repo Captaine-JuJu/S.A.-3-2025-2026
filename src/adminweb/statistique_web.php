@@ -14,12 +14,12 @@ include("../accesDenied.php");
 	include("../connexion.php");
 ?>
 
-<div id="container">
-    <div id="statistiques">
-	<div id="StatistiqueUC">
+<div class="container">
+    <div class="statistiques">
+	<div class="StatistiqueUC">
 	    <h2> Statistiques</h2>
     	    <h3>Unité centrale</h3>
-	    <div id="connexions">
+	    <div class="connexions">
 	   	<label>
 	        <?php
 
@@ -142,7 +142,7 @@ include("../accesDenied.php");
 		</label>
    	     </div>
 	</div>
-	<div id="StatistiqueE">
+	<div class="StatistiqueE">
     	    <label>
     	    <h3>Ecran</h3>
    	    <?php
@@ -209,7 +209,7 @@ include("../accesDenied.php");
 	    ?>
 	    </label>
 	</div>
-	<div id="StatistiqueC">
+	<div class="StatistiqueC">
 	    <label>
    	    <h3>Connexion</h3>
   	    <?php
