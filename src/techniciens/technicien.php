@@ -30,13 +30,13 @@ include("../accesDenied.php");
                             <table role="presentation">
                                 <tr>
                                     <td>
-                                        <label>Nom :
-                                            <input type="text" name="nomUC" id="nomUC"></label>
+                                        <label>Nom (Obligatoire):
+                                            <input type="text" name="nomUC" id="nomUC" required></label>
                                     </td>
                                     <td>
-                                        <label>N° Serie :
-                                            <input type="text" name="nSerieUC" id="nSerieUC"></label>
-				    </td>
+                                        <label>N° Serie (Obligatoire):
+                                            <input type="text" name="nSerieUC" id="nSerieUC" required></label>
+				                    </td>
                                     <td>
                                         <label>Fabricant : </label>
                                             <select name="fabricantUC" id="fabricantUC">
@@ -44,7 +44,7 @@ include("../accesDenied.php");
                                                 <?php
                                                 while ($ligne = mysqli_fetch_row($resultFab)) {
                                                     echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
-						}
+						                        }
                                                 ?>
                                             </select>
                                     </td>
@@ -160,12 +160,12 @@ include("../accesDenied.php");
                             <input type="submit" value="Ajouter" name="OK">
                         </form>
                         <?php
-                            if (isset($_GET['error']))
-                                echo "Connexion échoué";
-                            else if (isset($_GET['creation=deja_existent']))
-                                echo "numéros déjà existant";
-                            else if (isset($_GET['creation=ok']))
-                                echo "Ajout réussie";
+                        if (isset($_GET['error']))
+                            echo "Connexion échoué";
+                        else if (isset($_GET['creation=deja_existent']))
+                            echo "numéros déjà existant";
+                        else if (isset($_GET['creation=ok']))
+                            echo "Ajout réussie";
                         ?>
                     </div>
                 </div>
@@ -183,11 +183,30 @@ include("../accesDenied.php");
                             <input type="file" value="importer" name="importer"></label>
                     </div>
                 </div>
-                <h3>Inventaire des unités centrales</h3>
+                <label for="Machine">Machines:<br>
+                    <select name="Machines">
+                        <?php
+                        echo "<option value='Unites_centrales'>Unites centrales</option>";
+                        echo "<option value='ecrans'>Ecrans</option>";
+                        ?>
+                    </select>
+                </label><br>
+                <h3>Inventaire des Machines</h3>
+                <label for="colonnes">Colonnes:<br>
+                    <select name="colonnes">
+                        <?php
+                        $sql = "DESCRIBE devices;";
+                        $result = mysqli_query($connect, $sql);
+                        while ($ligne = mysqli_fetch_row($result)){
+                            echo "<option value='.$ligne[0].'>".$ligne[0] ."</option>";
+                        }
+                        ?>
+                    </select>
+                </label><br>
 
                 <?php
-                    	$sql = "SELECT * FROM Devices";
-			$result = mysqli_query($connect, $sql);
+                $sql = "SELECT * FROM Devices";
+                $result = mysqli_query($connect, $sql);
                 ?>
 
                 <table id="unitéesCentrales">
@@ -208,22 +227,28 @@ include("../accesDenied.php");
                         <th>DDR</th>
                         <th>Date d'achat</th>
                         <th>Date fin garantis</th>
+                        <th></th>
                     </tr>
                     <?php
-                        while ($ligne = mysqli_fetch_row($result)) {
-                            echo "<tr>";
-                            foreach ($ligne as $value){
-                                echo "<td>".$value."</td>";
-                            }
-                            echo "</tr>";
+                    while ($ligne = mysqli_fetch_row($result)) {
+                        echo "<tr>";
+                        $nom = $ligne[0];
+                        foreach ($ligne as $value){
+                            echo "<td>".$value."</td>";
                         }
+                        echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
+                        echo "</tr>";
+                    }
+                    if (isset($_GET['supprimer'])){
+                        $sql = "DELETE FROM Devices where Nom='$nom';";
+                        $result = mysqli_query($connect, $sql);
+                    }
                     ?>
-
                 </table>
                 <h3>Inventaire des écrans</h3>
                 <?php
-                	$sql = "SELECT * FROM Monitors";
-                	$result = mysqli_query($connect, $sql);
+                $sql = "SELECT * FROM Monitors";
+                $result = mysqli_query($connect, $sql);
                 ?>
                 <table>
                     <tr>
@@ -234,6 +259,7 @@ include("../accesDenied.php");
                         <th>Résolution</th>
                         <th>Relié à</th>
                         <th>Support</th>
+                        <th></th>
                     </tr>
                     <?php
                     while ($ligne = mysqli_fetch_row($result)) {
@@ -241,6 +267,7 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
+                        echo "<td><input type='submit' name='supprimer' value='supprimer'></td>";
                         echo "</tr>";
                     }
                     ?>
@@ -249,7 +276,7 @@ include("../accesDenied.php");
         </div>
     </div>
 <?php
-//Fermeture base de donnée
+//Fermeture base de donné
 mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
