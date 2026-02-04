@@ -13,11 +13,11 @@ include_once("../connexion.php");
 ?>
 <div class="tech">
     <div class="connexion">
-        <div id="pageConnexion">
-            <div id="container">
-                <div id="inventaires">
-                    <div id="technique">
-                        <div id="formulaireAjouter">
+        <div class="pageConnexion">
+            <div class="container">
+                <div class="inventaires">
+                    <div class="technique">
+                        <div class="formulaireAjouter">
                             <form method="post">
                                 <h2> Ajout nom des systèmes d’exploitations</h2>
                                 <label for="OS">Nom OS:<br>
@@ -63,8 +63,8 @@ include_once("../connexion.php");
     }
     ?>
     <div class="listetech connexion">
-        <div id="pageConnexion">
-            <div id="container">
+        <div class="pageConnexion">
+            <div class="container">
                 <div class="clinventaires">
                     <h3>Liste des os</h3>
                     <?php
@@ -90,8 +90,8 @@ include_once("../connexion.php");
         </div>
     </div>
     <div class="listetech connexion">
-        <div id="pageConnexion">
-            <div id="container">
+        <div class="pageConnexion">
+            <div class="container">
                 <div class="clinventaires">
                     <h3>Liste des fabricants</h3>
                     <?php

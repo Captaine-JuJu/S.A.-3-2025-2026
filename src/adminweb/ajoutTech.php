@@ -37,8 +37,8 @@ include("../connexion.php");
        </div>
    </div>
    <div class="listetech connexion">
-       <div id="pageConnexion">
-           <div id="container">
+       <div class="pageConnexion">
+           <div class="container">
                <div class="clinventaires">
                     <h3>Liste des techniciens</h3>
                     <?php

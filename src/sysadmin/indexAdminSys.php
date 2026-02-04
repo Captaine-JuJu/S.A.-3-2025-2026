@@ -13,7 +13,7 @@ include_once("../fragments/menuSys.html");
 $fp = fopen("../données/connections.csv", "r");
 
 fgetcsv($fp);
-echo "<div id='log'>";
+echo "<div class='log'>";
 	echo "<table>";
 	echo "<thead>";
 	echo "<th>Login</th>";

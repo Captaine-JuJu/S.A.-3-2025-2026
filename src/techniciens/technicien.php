@@ -236,7 +236,7 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
-                        echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
+                        echo "<td><input type='button' name='supprimer' value='supprimer'><a href=''></a></td>";
                         echo "</tr>";
                     }
                     if (isset($_GET['supprimer'])){

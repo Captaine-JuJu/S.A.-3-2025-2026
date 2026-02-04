@@ -8,8 +8,8 @@
     include("fragments/menu.html");
     include("connexion.php");
 ?>
-<div id="container">
-    <div id="inventaires">
+<div class="container">
+    <div class="inventaires">
         <h2>Bienvenue</h2>
 
         <h3>Inventaire des unités centrales</h3>

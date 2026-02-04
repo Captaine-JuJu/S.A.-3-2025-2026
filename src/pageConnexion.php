@@ -7,8 +7,8 @@ include("fragments/headers.html");
 <?php
 include("fragments/menu.html");
 ?>
-    <div id="pageConnexion">
-        <div id="connexion">
+    <div class="pageConnexion">
+        <div class="connexion">
             <form method="POST" action="actionLogin.php">
 
                 <label >Identifiants :<input name="login" id="login" type="text" placeholder="Identifiant"></label>
