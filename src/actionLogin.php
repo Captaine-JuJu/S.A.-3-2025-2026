@@ -26,6 +26,17 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
         $_SESSION["role"] = $user["role"];
 
         $role = $user["role"];
+
+//        on a besoin de $user, $role, date+heure
+//        puis on les mets dans un fichier csv (possiblité de le téléchargé)
+
+        $log = fopen("sysadmin/log.csv", "w");
+        date_default_timezone_set("Europe/Paris");
+        fputcsv($log, array($user,",", $role,",",date("d/m/Y H:i:s")));
+        fclose($log);
+
+
+
         mysqli_close($connect);
 
         switch ($role) {
