@@ -126,11 +126,11 @@ include("../accesDenied.php");
                             <table role="presentation">
                                 <tr>
                                     <td>
-                                        <label>N° série :
+                                        <label>N° série (Obligatoire) :
                                             <input type="text" name="nSerieE" id="nSerieE"></label>
                                     </td>
                                     <td>
-                                        <label>Fabricant :
+                                        <label>Fabricant (Obligatoire):
                                             <input type="text" name="fabricantE" id="fabricantE"></label>
                                     </td>
                                     <td>
@@ -236,7 +236,7 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
-                        echo "<td><input type='button' name='supprimer' value='supprimer'><a href=''></a></td>";
+                        echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
                         echo "</tr>";
                     }
                     if (isset($_GET['supprimer'])){
