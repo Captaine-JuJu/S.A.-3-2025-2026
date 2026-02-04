@@ -28,9 +28,12 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
         $role = $user["role"];
 
 //        on a besoin de $user, $role, date+heure
-//        puis on les mets dans un fichier csv (possiblité de le téléchargé)
+//        puis on les mets dans une base de donnée (possiblité de le téléchargé)
 
-        $sqllog = "INSERT INTO";
+        date_default_timezone_set("Europe/Paris");
+        $date = date("d/m/Y H:i:s");
+
+        //$sqllog = "INSERT INTO log VALUES ('$role', '$login', $date)";
 
 
 
