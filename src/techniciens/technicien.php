@@ -7,18 +7,18 @@ include("../accesDenied.php");
     <header>
         <h1>Gestion</h1>
     </header>
-    <?php
-    include("../fragments/menuTech.html");
-    ?>
-    <?php
-    include_once("../connexion.php");
+<?php
+include("../fragments/menuTech.html");
+?>
+<?php
+include_once("../connexion.php");
 
-    $sqlFab = "SELECT * FROM fabriquant";
-    $sqlOS = "SELECT * FROM os";
+$sqlFab = "SELECT * FROM fabriquant";
+$sqlOS = "SELECT * FROM os";
 
-    $resultFab = mysqli_query($connect, $sqlFab);
-    $resultOS = mysqli_query($connect, $sqlOS);
-    ?>
+$resultFab = mysqli_query($connect, $sqlFab);
+$resultOS = mysqli_query($connect, $sqlOS);
+?>
     <div id="container">
         <div id="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
@@ -36,17 +36,17 @@ include("../accesDenied.php");
                                     <td>
                                         <label>N° Serie (Obligatoire):
                                             <input type="text" name="nSerieUC" id="nSerieUC" required></label>
-				                    </td>
+                                    </td>
                                     <td>
                                         <label>Fabricant : </label>
-                                            <select name="fabricantUC" id="fabricantUC">
-                                                <option value=""> Choisissez une option </option>
-                                                <?php
-                                                while ($ligne = mysqli_fetch_row($resultFab)) {
-                                                    echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
-						                        }
-                                                ?>
-                                            </select>
+                                        <select name="fabricantUC" id="fabricantUC">
+                                            <option value=""> Choisissez une option </option>
+                                            <?php
+                                            while ($ligne = mysqli_fetch_row($resultFab)) {
+                                                echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </td>
                                     <td>
                                         <label>Model :
@@ -79,7 +79,7 @@ include("../accesDenied.php");
                                             <?php
                                             while ($ligne = mysqli_fetch_row($resultOS)) {
                                                 echo "<option value='".$ligne[0]."'>".$ligne[0]."</option>";
-					    }
+                                            }
                                             ?>
                                         </select>
                                     </td>
@@ -280,20 +280,3 @@ include("../accesDenied.php");
 mysqli_close($connect);
 include("../fragments/footers.html");
 ?>
-<?php
-//include("techniciens.html");
-//session_start();
-//if(isset($_SESSION['login'])){
-//    $login = $_SESSION['login'];
-//    if ($_SESSION['login']=="admin"){
-//        echo"bonjour Administrateur";
-//        echo "<br>";
-//    }else{
-//        echo"bonjour $login";
-//        echo "<br>";
-//    }
-//
-//    echo "<a href='logout.php'>logout </a>";
-//} else {
-//    header("location:login.php?error");
-//}

@@ -27,20 +27,7 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
 
         $role = $user["role"];
 
-//        on a besoin de $user, $role, date+heure
-//        puis on les mets dans une base de donnée (possiblité de le téléchargé)
-
-        date_default_timezone_set("Europe/Paris");
-        $date = date("d/m/Y H:i:s");
-
-        $sqllog = "INSERT INTO log VALUES ('$login', '$role', $date)";
-        $sqlplog = mysqli_prepare($connect, $sqllog);
-        mysqli_stmt_bind_param($sqlplog, 'sss', $login, $role, $date);
-        mysqli_stmt_execute($sqlplog);
-
-
-
-
+        //log
 
         mysqli_close($connect);
 

@@ -33,13 +33,13 @@ include("../connexion.php");
                 echo "Les mots de passe ne correspondent pas";
             else if (isset($_GET['ajout_reussi']))
                 echo "Creation réussie";
-           ?>
-       </div>
-   </div>
-   <div class="listetech connexion">
-       <div class="pageConnexion">
-           <div class="container">
-               <div class="clinventaires">
+            ?>
+        </div>
+    </div>
+    <div class="listetech connexion">
+        <div class="pageConnexion">
+            <div class="container">
+                <div class="clinventaires">
                     <h3>Liste des techniciens</h3>
                     <?php
                     $sql = "SELECT login, password FROM user;";
@@ -50,22 +50,22 @@ include("../connexion.php");
                             <th>Identifiant</th>
                             <th>Mot de Passe</th>
                             <th></th>
-                       </tr>
-                       <?php
-                       while ($ligne= mysqli_fetch_row($result)){
-                       echo "<tr>";
-                       foreach ($ligne as $value){
-                           echo "<td>".$value."</td>";
-                       }
-                       echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
-                       echo "</tr>";
-                       }
-                       ?>
-                   </table>
-               </div>
-           </div>
-       </div>
-   </div>
+                        </tr>
+                        <?php
+                        while ($ligne= mysqli_fetch_row($result)){
+                            echo "<tr>";
+                            foreach ($ligne as $value){
+                                echo "<td>".$value."</td>";
+                            }
+                            echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 include("../fragments/footers.html");
