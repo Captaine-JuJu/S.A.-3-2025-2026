@@ -27,7 +27,24 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
 
         $role = $user["role"];
 
-        //log
+        date_default_timezone_set("Europe/Paris");
+        $date = date("d/m/Y H:i:s");
+        echo $login,$role,$date;
+        $sql_co = "INSERT INTO log (login,role,date) VALUES (?,?,?)";
+
+        $sqlog = mysqli_prepare($connect, $sql_co);
+
+        if ($sqlog) {
+            mysqli_stmt_bind_param($sqlog, 'sss', $login, $role, $date);
+            if (mysqli_stmt_execute($sqlog)) {
+                echo "Insertion réussie!";
+            } else {
+                echo "Erreur lors de l'insertion.";
+            }
+            mysqli_stmt_close($sqlog);
+        } else {
+            echo "Erreur de préparation de la requête.";
+        }
 
         mysqli_close($connect);
 
