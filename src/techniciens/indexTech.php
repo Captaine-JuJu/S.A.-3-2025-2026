@@ -10,8 +10,8 @@ include("../accesDenied.php");
 <?php
 include("../fragments/menuTech.html");
 ?>
-<div id="pagePresentation">
-    <div id="presentation">
+<div class="pagePresentation">
+    <div class="presentation">
         <h2>Présentation de la platforme : </h2>
         <video controls>
             <source src="video.mp4" type="video/mp4">
