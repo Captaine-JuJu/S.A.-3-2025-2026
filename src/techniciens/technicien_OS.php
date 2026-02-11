@@ -19,13 +19,13 @@ include("../accesDenied.php");
     $resultFab = mysqli_query($connect, $sqlFab);
     $resultOS = mysqli_query($connect, $sqlOS);
     ?>
-    <div id="container">
-        <div id="inventaires">
+    <div class="container">
+        <div class="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
-            <div id="technique">
-                <div id="formulaireAjouter">
+            <div class="technique">
+                <div class="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
-                    <div id="ajoutUC">
+                    <div class="ajoutUC">
                         <form method="POST" action="actionAjoutUC.php">
                             <table role="presentation">
                                 <tr>
@@ -128,13 +128,13 @@ include("../accesDenied.php");
                     </div>
                 </div>
 
-                <div id="formulaireImporterExporterFichier">
-                    <div id="exporte">
+                <div class="formulaireImporterExporterFichier">
+                    <div class="exporte">
                         <h3>Exporter fichier des machines</h3>
                         <label>Exporter :
                             <input type="button" value="exporter" name="exporter"></label>
                     </div>
-                    <div id="import">
+                    <div class="import">
                         <h3>Importer fichier des machines</h3>
 
                         <label>Importer :
@@ -199,7 +199,7 @@ include("../accesDenied.php");
                 $result = mysqli_stmt_get_result($sqlp);
                 ?>
 
-                <table id="unitéesCentrales">
+                <table class="unitéesCentrales">
                     <tr>
                         <th>Nom</th>
                         <th>N° série</th>
