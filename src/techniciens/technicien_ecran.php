@@ -19,13 +19,13 @@ include("../accesDenied.php");
     $resultFab = mysqli_query($connect, $sqlFab);
     $resultOS = mysqli_query($connect, $sqlOS);
     ?>
-    <div id="container">
-        <div id="inventaires">
+    <div class="container">
+        <div class="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
-            <div id="technique">
-                <div id="formulaireAjouter">
+            <div class="technique">
+                <div class="formulaireAjouter">
                     <h3>Ajout Ecran</h3>
-                    <div id="ajoutEcran">
+                    <div class="ajoutEcran">
                         <form method="POST" action="actionAjoutE.php">
                             <table role="presentation">
                                 <tr>
@@ -73,13 +73,13 @@ include("../accesDenied.php");
                         ?>
                     </div>
                 </div>
-                <div id="formulaireImporterExporterFichier">
-                    <div id="exporte">
+                <div class="formulaireImporterExporterFichier">
+                    <div class="exporte">
                         <h3>Exporter fichier des machines</h3>
                         <label>Exporter :
                             <input type="button" value="exporter" name="exporter"></label>
                     </div>
-                    <div id="import">
+                    <div class="import">
                         <h3>Importer fichier des machines</h3>
                         <label>Importer :
                             <input type="file" value="importer" name="importer"></label>
@@ -166,4 +166,5 @@ include("../accesDenied.php");
 //Fermeture base de donné
 mysqli_close($connect);
 include("../fragments/footers.html");
+
 ?>
