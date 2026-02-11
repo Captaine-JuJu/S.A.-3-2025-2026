@@ -28,14 +28,14 @@ if(isset($_POST["nomUC"], $_POST["nSerieUC"])){
     //Si le numéro de série n'est pas déjà dans la bdd
     while($row = mysqli_fetch_row($result)){
         if($row[0] == $nom || $row[1] == $nSerieUC){
-            header("location: technicien.php?creation=deja_existent");
+            header("location: technicien_OS.php?creation=deja_existent");
             exit(0);
         }
     }
     echo("ok");
     $ajout = mysqli_query($connect, $requete);
     mysqli_close($connect);
-    header("location: technicien.php");
+    header("location: technicien_OS.php");
 }
 mysqli_close($connect);
-header("location: technicien.php?error");
+header("location: technicien_OS.php?error");

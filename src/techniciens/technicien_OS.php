@@ -117,48 +117,6 @@ include("../accesDenied.php");
                             </table>
                             <input type="submit" value="AjouterUC" name="OK">
                         </form>
-                    </div>
-
-                    <h3>Ajout Ecran</h3>
-                    <div id="ajoutEcran">
-
-                        <form method="POST" action="actionAjoutE.php">
-                            <table role="presentation">
-                                <tr>
-                                    <td>
-                                        <label>N° série :
-                                            <input type="text" name="nSerieE" id="nSerieE"></label>
-                                    </td>
-                                    <td>
-                                        <label>Fabricant :
-                                            <input type="text" name="fabricantE" id="fabricantE"></label>
-                                    </td>
-                                    <td>
-                                        <label>Model :
-                                            <input type="text" name="modelE" id="modelE"></label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label>Taille :
-                                            <input type="text" name="tailleE" id="tailleE"></label>
-                                    </td>
-                                    <td>
-                                        <label>Résolution :
-                                            <input type="text" name="resolutionE" id="resolutionE"></label>
-                                    </td>
-                                    <td>
-                                        <label>Relié à :
-                                            <input type="text" name="connecteurE" id="connecteurE"></label>
-                                    </td>
-                                    <td>
-                                        <label>Support :
-                                            <input type="text" name="supportE" id="supportE"></label>
-                                    </td>
-                                </tr>
-                            </table>
-                            <input type="submit" value="Ajouter" name="OK">
-                        </form>
                         <?php
                         if (isset($_GET['error']))
                             echo "Connexion échoué";
@@ -192,10 +150,10 @@ include("../accesDenied.php");
                             $sql = "DESCRIBE devices;";
                             $result = mysqli_query($connect, $sql);
                             $nbr_ligne = 0;
-                            while ($ligne = mysqli_fetch_row($result)){
+                            while ($li= mysqli_fetch_row($result)){
                                 // n'affiche que les colonnes pas déja afficher dans le tableau
                                 if($nbr_ligne >= 3) {
-                                    echo "<option value='.$ligne[0].'>" . $ligne[0] . "</option>";
+                                    echo "<option value='.$li[0].'>" . $li[0] . "</option>";
                                 }
                                 $nbr_ligne++;
                             }
@@ -268,7 +226,7 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
-                        echo "<td><input type='submit' formmethod='get' formaction='supprimerDonnee.php' name='supprimer' value='supprimer'></td>";
+                        echo "<td><input type='submit' formmethod='get' formaction='actionsupprime.php' name='supprimer' value='supprimer'></td>";
                         echo "</tr>";
                     }
                     ?>
@@ -278,94 +236,19 @@ include("../accesDenied.php");
                     <?php
                     if($nombre_page != 0){
                         if ($pageActuelle > 1): ?>
-                        <a href="technicien.php?page=<?= $pageActuelle - 1 ?>page2=<?=$pageMonitor?>" class="prev">Précédent</a>
+                        <a href="technicien_OS.php?page=<?= $pageActuelle - 1 ?>page2=<?=$pageMonitor?>" class="prev">Précédent</a>
                     <?php endif; ?>
 
                     <?php for ($i = 1; $i <= $nombre_page; $i++): ?>
                         <?php if ($i == $pageActuelle): ?>
                             <span><strong><?= $i ?></strong></span>
                         <?php else: ?>
-                            <a href="technicien.php?page=<?= $i ?>page2=<?=$pageMonitor?>" class="page"><?= $i ?></a>
+                            <a href="technicien_OS.php?page=<?= $i ?>page2=<?=$pageMonitor?>" class="page"><?= $i ?></a>
                         <?php endif; ?>
                     <?php endfor; ?>
 
                     <?php if ($pageActuelle < $nombre_page): ?>
-                        <a href="technicien.php?page=<?= $pageActuelle + 1 ?>page2=<?=$pageMonitor?>" class="next">Suivant</a>
-                    <?php endif; }?>
-                </nav>
-
-                <h3>Inventaire des écrans</h3>
-                <?php
-                // compte le nombre d'écrans dans la base de données
-                $totalsql = "SELECT COUNT(*) AS total FROM Monitors;";
-                $resulttotal = mysqli_query($connect, $totalsql);
-                $totalM = mysqli_fetch_row($resulttotal)[0];
-
-                $machineParPage = 4;
-                if($totalM <= $machineParPage){
-                    $nombre_page = 0;
-                }else {
-                    // calcul le nombre de pages nécessaire pour tous afficher
-                    $nombre_page = ceil($totalM / $machineParPage);
-                }
-
-                $pageMonitor = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-                // Vérifier que la page est dans les bornes
-                if ($pageMonitor < 1) {
-                    $pageMonitor = 1;
-                } elseif ($pageMonitor > $totalM) {
-                    $pageMonitor = $totalM;
-                }
-
-                //delimite le nombre de page afficher
-                $offset = ($pageMonitor - 1) * $machineParPage;
-
-                $sql = "SELECT * FROM Monitors ORDER BY num_series DESC LIMIT ? OFFSET ?";
-                $sqlp = mysqli_prepare($connect, $sql);
-                mysqli_stmt_bind_param($sqlp, 'ss', $machineParPage, $offset);
-                mysqli_stmt_execute($sqlp);
-                $result = mysqli_stmt_get_result($sqlp);
-                ?>
-                <table>
-                    <tr>
-                        <th>N° série</th>
-                        <th>Fabricant</th>
-                        <th>Model</th>
-                        <th>Taille</th>
-                        <th>Résolution</th>
-                        <th>Relié à</th>
-                        <th>Support</th>
-                        <th></th>
-                    </tr>
-                    <?php
-                    while ($ligne = mysqli_fetch_assoc($result)) {
-                        echo "<tr>";
-                        foreach ($ligne as $value){
-                            echo "<td>".$value."</td>";
-                        }
-                        echo "<td><input type='submit' name='supprimer' value='supprimer'></td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </table>
-                <nav class="pagination">
-                    <?php
-                    if($nombre_page != 0){
-                        if ($pageMonitor > 1): ?>
-                        <a href="technicien.php?page=<?= $pageActuelle?> page2=<?=$pageMonitor - 1?>" class="prev">Précédent</a>
-                    <?php endif; ?>
-
-                    <?php for ($i = 1; $i <= $nombre_page; $i++): ?>
-                        <?php if ($i == $pageMonitor): ?>
-                            <span><strong><?= $i ?></strong></span>
-                        <?php else: ?>
-                            <a href="technicien.php?page=<?= $pageActuelle?> page2=<?=$i?>" class="page"><?= $i ?></a>
-                        <?php endif; ?>
-                    <?php endfor; ?>
-
-                    <?php if ($pageMonitor < $nombre_page): ?>
-                        <a href="technicien.php?page=<?= $pageActuelle?> page2=<?=$pageMonitor + 1?>" class="next">Suivant</a>
+                        <a href="technicien_OS.php?page=<?= $pageActuelle + 1 ?>page2=<?=$pageMonitor?>" class="next">Suivant</a>
                     <?php endif; }?>
                 </nav>
             </div>
