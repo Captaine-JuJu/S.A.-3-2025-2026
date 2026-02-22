@@ -16,12 +16,12 @@ include("../accesDenied.php");
 
 <div class="container">
     <div class="statistiques">
-	<div class="StatistiqueUC">
-	    <h2> Statistiques</h2>
+		<h2> Statistiques</h2>
+		<div class="StatistiqueUC">    
     	    <h3>Unité centrale</h3>
-	    <div class="connexions">
-	   	<label>
-	        <?php
+		    <div class="connexions">
+				<div class="stat">
+		        <?php
 
 	         // $sql = "SELECT fabricant, COUNT(*) as nbr FROM Monitors GROUP BY fabricant";
   		 // $result = mysqli_query($connect, $sql);
@@ -54,6 +54,9 @@ include("../accesDenied.php");
        		     echo "</tr>";
    		 }
    		 echo "</table>";
+		</div>
+		<div class="stat">
+		<?php
 
    		 $sql = "SELECT OS, COUNT(*) as nbr FROM Devices GROUP BY OS;";
    		 $result = mysqli_query($connect, $sql);
@@ -73,6 +76,9 @@ include("../accesDenied.php");
 		     echo "</tr>";
    		 }
    		 echo "</table>";
+		</div>
+		<div class="stat">
+		<?php
 
    		 $sql = "SELECT Localisation, COUNT(*) as nbr FROM Devices GROUP BY Localisation;";
    		 $result = mysqli_query($connect, $sql);
@@ -139,12 +145,12 @@ include("../accesDenied.php");
 
     		//fclose($fp);
     		?>
-		</label>
+			</div>
    	     </div>
 	</div>
 	<div class="StatistiqueE">
-    	    <label>
-    	    <h3>Ecran</h3>
+		<h3>Ecran</h3>
+			<div class="stat">
    	    <?php
 	    $totalsql = "SELECT COUNT(*) AS total FROM Monitors;";
 	    $resulttotal = mysqli_query($connect, $totalsql);
@@ -207,13 +213,13 @@ include("../accesDenied.php");
 
 	    //fclose($fpIM);
 	    ?>
-	    </label>
+		</div>
 	</div>
 	<div class="StatistiqueC">
-	    <label>
    	    <h3>Connexion</h3>
+		<div class="stat">
   	    <?php
-   	    include_once("STAT/outilsStat.php");
+   	    include_once("../outilsStat.php");
    	    $fp = fopen("données/connections.csv", "r");
 
 	    $listConnection = array();
@@ -228,7 +234,7 @@ include("../accesDenied.php");
 
 	    }
 	    for($i = 0; $i<count($listConnection);$i++){
-		$listeConnection[$i] = intval($listeConnection[$i]);
+		$listeConnection[$i] = intval($listConnection[$i]);
 	    }
 
 	    echo "Total d'heure de connexion:  ".round((array_sum($listConnection) / 3600),2);
@@ -247,8 +253,7 @@ include("../accesDenied.php");
 	    echo "Mediane de temps de connexion: ".$mediane." secondes<br>";
 
 	    ?>
-	    </label>
-	</div>
+		</div>
     </div>
 </div>
 <?php
