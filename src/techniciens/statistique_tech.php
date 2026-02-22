@@ -231,29 +231,31 @@ include("../accesDenied.php");
 			
 			while(($resultA = fgetcsv($fp)) !== false) {
 			
-			$listUtilisateur[] = $resultA[0];
-			$listConnection[] = $resultA[2];
-			
+				$listUtilisateur[] = $resultA[0];
+				$listConnection[] = $resultA[2];
 			}
 			for($i = 0; $i<count($listConnection);$i++){
-			$listeConnection[$i] = intval($listeConnection[$i]);
+				$listeConnection[$i] = intval($listeConnection[$i]);
 			}
 			
 			echo "Total d'heure de connexion:  ".round((array_sum($listConnection) / 3600),2);
 			echo " h<br>";
+			echo "<br>";
 			
 			$temps = tempsConnectionParUtlistateur($listUtilisateur, $listConnection);
 			$max = maxTemps($temps);
 			$minute = $max[1]/60;
 			echo "Top utilisateur : ".$max[0]." avec ".$minute. " minutes de connexion<br>";
+			echo "<br>";
 			fclose($fp);
 			
 			$moy = moyenne($listConnection);
 			echo "Moyenne de temps de connexion: ".$moy." secondes<br>";
+			echo "<br>";
 			
 			$mediane = mediane($listConnection);
 			echo "Mediane de temps de connexion: ".$mediane." secondes<br>";
-			
+			echo "<br>";
 			?>
 			</div>
 		</div>
