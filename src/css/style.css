@@ -94,9 +94,9 @@ th{
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.pagination a:first-child, .pagination a:last-child{
+.pagination a.prev, .pagination a.next{
     /*.pagination a.prev, .pagination a.next*/
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .pagination a:hover {
@@ -148,8 +148,7 @@ th{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 40vh;
+    padding: 5px;
 }
 
 .connexion{
@@ -218,5 +217,27 @@ label{
 }
 
 .statistiques label{
-    margin: 10px
+    margin: 10px;
 }
+
+.statistiqueUC{
+    margin: 5px;
+}
+
+.stat{
+    box-shadow: rgba(50, 50, 93, 0.25) 0 6px 12px -2px, rgba(0, 0, 0, 0.3) 0 3px 7px -3px;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.stat table{
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.stat thead, th, td{
+    width: 50%;
+}
+
+
