@@ -1,14 +1,14 @@
 def bytesVersEntier (data: bytes) -> int:
+    """
+    Convertit une valeur binaire en décimale
+    :param data: valeur binaire
+    :return: Renvoi la valeur de data en décimale el little endian
+    """
     if len(data) != 4:
-        raise ValueError("data doit etre de 4 octets")
+        raise ValueError("data doit être de 4 octets")
+    return int.from_bytes(data, byteorder="little")
 
-    res = 0
-
-    for i in range(4):
-        res += data[i] << (i * 8)
-
-    return res
-
+#TODO: Les trois fonction suivantes sont les mêmes, on peut les fusionner en une. ex : byteVersListMot(data: bytes, taille: int) ->list[int]
 def constanteVersEntier():
     const = b"expand 32-byte k"
     mots_32bits = []
@@ -20,9 +20,9 @@ def constanteVersEntier():
 
     return mots_32bits
 
-def keyVersEntier(key: bytes) -> int:
+def keyVersEntier(key: bytes) -> list[int]:
     if len(key) != 32:
-        raise ValueError("key doit etre de 32 octets")
+        raise ValueError("key doit être de 32 octets")
     cle_entier = []
 
     for i in range(0,len(key),4):
@@ -32,9 +32,9 @@ def keyVersEntier(key: bytes) -> int:
 
     return cle_entier
 
-def nonceVersEntier(nonce: bytes) -> int:
+def nonceVersEntier(nonce: bytes) -> list[int]:
     if len(nonce) != 12:
-        raise ValueError("nonce doit etre de 12 octets")
+        raise ValueError("nonce doit être de 12 octets")
 
     nonce_entier = []
     for i in range(0,len(nonce),4):
@@ -69,9 +69,9 @@ def quarter_round(a, b, c, d):
 
     return a, b, c, d
 
-def round(etat_init: list) -> list:
+def chacha20_round(etat_init: list) -> list:
     init = list(etat_init)
-    for i in range(10):
+    for i in range(20):
 
         # Round des colonnes
         init[0], init[4], init[8], init[12] = quarter_round(init[0], init[4], init[8], init[12])
@@ -91,15 +91,13 @@ def round(etat_init: list) -> list:
     return init
 
 def entierVersBytes (entier: int) -> bytes:
-    octets = []
-
-    res = 0
-
-    for i in range(4):
-        octet = (entier >> (i * 8)) & 0xFF
-        octets.append(octet)
-
-    return bytes(octets)
+    """
+    Covertit un entier en binaire sous forme d'octets.
+    :param entier: nombre à convertir en bytes
+    :return: nombre convrtit en bytes
+    """
+    #renvoie les 4 octets les plus petit
+    return entier.to_bytes(4, byteorder="little")
 
 def chacha20_block(key: bytes, nonce:bytes, counter: int) -> bytes:
     const = constanteVersEntier()
@@ -108,7 +106,7 @@ def chacha20_block(key: bytes, nonce:bytes, counter: int) -> bytes:
     bits = b""
     matrice_etat = const + key + [counter] + nonce
     print(matrice_etat)
-    etat_final = round(matrice_etat)
+    etat_final = chacha20_round(matrice_etat)
 
     for entier in etat_final:
         bits += entierVersBytes(entier)
