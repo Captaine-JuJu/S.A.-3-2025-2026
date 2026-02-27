@@ -1,115 +1,81 @@
-def bytesVersEntier (data: bytes) -> int:
-    """
-    Convertit une valeur binaire en décimale
-    :param data: valeur binaire
-    :return: Renvoi la valeur de data en décimale el little endian
-    """
-    if len(data) != 4:
-        raise ValueError("data doit être de 4 octets")
-    return int.from_bytes(data, byteorder="little")
+import os
 
-#TODO: Les trois fonction suivantes sont les mêmes, on peut les fusionner en une. ex : byteVersListMot(data: bytes, taille: int) ->list[int]
-def constanteVersEntier():
-    const = b"expand 32-byte k"
-    mots_32bits = []
+import algorithms
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms
+from cryptography.hazmat.backends import default_backend
 
-    for i in range(0,len(const),4):
-        bloc = const[i:i+4]
-        ent = bytesVersEntier(bloc)
-        mots_32bits.append(ent)
-
-    return mots_32bits
-
-def keyVersEntier(key: bytes) -> list[int]:
-    if len(key) != 32:
-        raise ValueError("key doit être de 32 octets")
-    cle_entier = []
-
-    for i in range(0,len(key),4):
-        bloc = key[i:i+4]
-        ent = bytesVersEntier(bloc)
-        cle_entier.append(ent)
-
-    return cle_entier
-
-def nonceVersEntier(nonce: bytes) -> list[int]:
-    if len(nonce) != 12:
-        raise ValueError("nonce doit être de 12 octets")
-
-    nonce_entier = []
-    for i in range(0,len(nonce),4):
-        bloc = nonce[i:i+4]
-        ent = bytesVersEntier(bloc)
-        nonce_entier.append(ent)
-
-    return nonce_entier
+class Chacha20:
+    def __init__(self):
+        print("ok")
 
 
-def rotation(v: int, n:int) -> int:
-    res = ((v << n) | (v >> (32 - n))) & 0xFFFFFFFF
-    return res
+class Chacha20AvecBibli:
 
-def quarter_round(a, b, c, d):
+    def __init__(self, message_a_crypt: str, key: bytes = None, nonce: bytes = None):
 
-    a = (a + b) & 0xFFFFFFFF
-    d = d ^ a
-    d = rotation(d, 16)
+        self.message = message_a_crypt
 
-    c = (c + d) & 0xFFFFFFFF
-    b = b ^ c
-    b = rotation(b, 12)
+        if key is None:
+            self.key = os.urandom(32)
+        else:
+            if len(key) != 32:
+                raise ValueError("La clée ne fait pas 256 bits")
+            self.key = key
 
-    a = (a + b) & 0xFFFFFFFF
-    d = d ^ a
-    d = rotation(d, 8)
+        if nonce is None:
+            self.nonce = os.urandom(16)
+        else:
+            if len(nonce) != 16:
+                raise ValueError("Le nonce ne fait pas 96 bits")
+            self.nonce = nonce
 
-    c = (c + d) & 0xFFFFFFFF
-    b = b ^ c
-    b = rotation(b, 7)
 
-    return a, b, c, d
+    def set_message(self, new_message: str):
+        """Redéfinit le message à chiffrer"""
+        self.message = new_message
 
-def chacha20_round(etat_init: list) -> list:
-    init = list(etat_init)
-    for i in range(20):
 
-        # Round des colonnes
-        init[0], init[4], init[8], init[12] = quarter_round(init[0], init[4], init[8], init[12])
-        init[1], init[5], init[9], init[13] = quarter_round(init[1], init[5], init[9], init[13])
-        init[2], init[6], init[10], init[14] = quarter_round(init[2], init[6], init[10], init[14])
-        init[3], init[7], init[11], init[15] = quarter_round(init[3], init[7], init[11], init[15])
+    def set_nonce(self, nonce: bytes = None):
+        """Redéfinit le nonce"""
+        if nonce is None:
+            self.nonce = os.urandom(96).hex()
+        else:
+            self.nonce = nonce
 
-        # Round des diagonales
-        init[0], init[5], init[10], init[15] = quarter_round(init[0], init[5], init[10], init[15])
-        init[1], init[6], init[11], init[12] = quarter_round(init[1], init[6], init[11], init[12])
-        init[2], init[7], init[8], init[13] = quarter_round(init[2], init[7], init[8], init[13])
-        init[3], init[4], init[9], init[14] = quarter_round(init[3], init[4], init[9], init[14])
 
-    for i in range(16):
-        init[i] = (init[i] + etat_init[i]) & 0xFFFFFFFF
+    def cryptage_chacha20(self):
+        """Crypte un message en chacha20"""
+        message_bytes = self.message.encode("utf-8")
 
-    return init
+        algo = algorithms.ChaCha20(self.key, self.nonce)
 
-def entierVersBytes (entier: int) -> bytes:
-    """
-    Covertit un entier en binaire sous forme d'octets.
-    :param entier: nombre à convertir en bytes
-    :return: nombre convrtit en bytes
-    """
-    #renvoie les 4 octets les plus petit
-    return entier.to_bytes(4, byteorder="little")
+        cipher = Cipher(algo, mode=None, backend=default_backend())
+        encrypt = cipher.encryptor()
 
-def chacha20_block(key: bytes, nonce:bytes, counter: int) -> bytes:
-    const = constanteVersEntier()
-    key = keyVersEntier(key)
-    nonce = nonceVersEntier(nonce)
-    bits = b""
-    matrice_etat = const + key + [counter] + nonce
-    print(matrice_etat)
-    etat_final = chacha20_round(matrice_etat)
+        return encrypt.update(message_bytes) + encrypt.finalize()
 
-    for entier in etat_final:
-        bits += entierVersBytes(entier)
 
-    return bits
+    def decrypt_chacha20(self, message_chiffre: bytes) -> str:
+        """
+        Décrypte un mot binaire avec la méthode chacha20
+        :param message_chiffre: Message binaire à décripter
+        :return: message décripter
+        """
+        algo = algorithms.ChaCha20(self.key, self.nonce)
+
+        cipher = Cipher(algo, mode=None, backend=default_backend())
+        decrypt = cipher.encryptor()
+
+        message_claire = decrypt.update(message_chiffre) + decrypt.finalize()
+
+        return message_claire.decode('utf-8')
+
+
+
+if __name__ == "__main__":
+    chacha = Chacha20AvecBibli("salut")
+    message_crypt = chacha.cryptage_chacha20()
+    print(message_crypt)
+    message = chacha.decrypt_chacha20(message_crypt)
+    print(message)
 
