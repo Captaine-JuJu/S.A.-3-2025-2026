@@ -12,7 +12,7 @@ include("../fragments/menuweb.html");
 include("../connexion.php");
 ?>
 <div class="tech">
-    <div class="listetech connexion">
+    <div class="listetech connexion" id="form">
         <div class="pageConnexion">
             <div>
                 <form method="POST" action="actionCreationTech.php">
@@ -42,26 +42,35 @@ include("../connexion.php");
                 <div class="clinventaires">
                     <h3>Liste des techniciens</h3>
                     <?php
-                    $sql = "SELECT login, password FROM user;";
+                    $sql = "SELECT login, password FROM user WHERE role='Techniciens';";
                     $result = mysqli_query($connect, $sql);
                     ?>
-                    <table id="techniciens">
+                    <table class="en-tete">
                         <tr>
-                            <th>Identifiant</th>
-                            <th>Mot de Passe</th>
-                            <th></th>
+                            <th style="width: 30%">Identifiant</th>
+                            <th style="width: 30%">Mot de Passe</th>
+                            <th style="width: 40%"></th>
                         </tr>
+		   </table>
+	 	   <div class="scroll">
+		   <table id="techniciens">
                         <?php
-                        while ($ligne= mysqli_fetch_row($result)){
+                        while ($ligne= mysqli_fetch_assoc($result)){
                             echo "<tr>";
                             foreach ($ligne as $value){
-                                echo "<td>".$value."</td>";
+                                echo "<td style='width:30%'>".$value."</td>";
                             }
-                            echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "<td style='width: 40%'>";
+			    echo "<form method='POST' action='supprimerTech.php'>";
+			    echo "<input type='hidden' id='login' name='login' value='".$ligne['login']."'>";
+			    echo "<button type='submit'> Supprimer </button>";
+			    echo "</form>";
+			    echo "</td>";
                             echo "</tr>";
                         }
                         ?>
                     </table>
+		    </div>
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ include("../accesDenied.php");
                             <table role="presentation">
                                 <tr>
                                     <td>
-                                        <label for="nSerieE">N° série :
+                                        <label>N° série :
                                             <input type="text" name="nSerieE" id="nSerieE"></label>
                                     </td>
                                     <td>
@@ -73,7 +73,7 @@ include("../accesDenied.php");
                         ?>
                     </div>
                 </div>
-                <div class="formulaireImporterExporterFichier">
+                <div id="formulaireImporterExporterFichier">
                     <div class="exporte">
                         <h3>Exporter fichier des machines</h3>
                         <label for="exporterE">Exporter :
@@ -113,14 +113,14 @@ include("../accesDenied.php");
                 //delimite le nombre de page afficher
                 $offset = ($pageMonitor - 1) * $machineParPage;
 
-
-                $sql = "SELECT * FROM Monitors ORDER BY fabricant, Num_serie ASC LIMIT ? OFFSET ?";
+		//selectionne les lignes a afficher dans l'ordre decroissant des numeros de series
+                $sql = "SELECT * FROM Monitors ORDER BY num_serie DESC LIMIT ? OFFSET ?";
                 $sqlp = mysqli_prepare($connect, $sql);
                 mysqli_stmt_bind_param($sqlp, 'ss', $machineParPage, $offset);
                 mysqli_stmt_execute($sqlp);
                 $result = mysqli_stmt_get_result($sqlp);
                 ?>
-                <table id="tabfixecran">
+                <table>
                     <tr>
                         <th>N° série</th>
                         <th>Fabricant</th>
@@ -129,7 +129,7 @@ include("../accesDenied.php");
                         <th>Résolution</th>
                         <th>Relié à</th>
                         <th>Support</th>
-                        <th> </th>
+                        <th></th>
                     </tr>
                     <?php
                     while ($ligne = mysqli_fetch_assoc($result)) {
@@ -137,12 +137,7 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
-			echo "<td>";
-			echo "<form method='POST' action='supprimerDonnee.php'>";
-			echo "<input type='hidden' id='numS' name='numS' value='".$ligne['num_serie']."'>";
-			echo "<button type='submit'>Supprimer</button>";
-			echo "</form>";
-			echo "</td>";
+                        echo "<td><input type='submit' name='supprimer' value='supprimer'></td>";
                         echo "</tr>";
                     }
                     ?>
@@ -150,42 +145,25 @@ include("../accesDenied.php");
                 <nav class="pagination">
                     <?php
                     if($nombre_page != 0){
-                        if ($pageMonitor ==  1):
-			    $debut = 1;
-			    $fin = $pageMonitor +2;
-			elseif ($pageMonitor == 2): ?>
-			    <a href="technicien_ecran.php?page=<?=1?>#tabfixecran" class="page"><<</a>
-                            <a href="technicien_ecran.php?page=<?= $pageMonitor - 1?>#tabfixecran" class="prev">Précédent</a>
-                        <?php
-			    $debut = $pageMonitor -1;
-			    $fin = $pageMonitor + 1;
-			else: ?>
-			    <a href="technicien_ecran.php?page=<?=1?>#tabfixecran" class="page"><<</a>
-			    <a href="technicien_ecran.php?page=<?= $pageMonitor -1?>#tabfixecran" class="prev">Précédent</a>
-			<?php
-			    $debut = $pageMonitor -1;
-			    $fin = $pageMonitor +1;
-			endif;
-			if ($pageMonitor == $nombre_page or $pageMonitor == $nombre_page-1):
-			    $debut = $nombre_page -2;
-			    $fin = $nombre_page;
-			endif ?>
-                        <?php for ($i = $debut; $i <= $fin; $i++): ?>
-                            <?php if ($i == $pageMonitor): ?>
+                        if ($pageMonitor > 1): 
+			    // affiche un bouton précedent permettant d'aller sur la page précedante?>
+                            <a href="technicien_ecran.php?page=<?= $pageMonitor - 1?>" class="prev">Précédent</a>
+                        <?php endif; ?>
+
+                        <?php for ($i = 1; $i <= $nombre_page; $i++): ?>
+                            <?php if ($i == $pageMonitor): 
+				//affiche le numero de la page actuelle?>
                                 <span><strong><?= $i ?></strong></span>
-                            <?php else: ?>
-                                <a href="technicien_ecran.php?page=<?= $i?>#tabfixecran" class="page"><?= $i ?></a>
+                            <?php else: 
+				// affiche tous les numero de pag?>
+                                <a href="technicien_ecran.php?page=<?= $i?>" class="page"><?= $i ?></a>
                             <?php endif; ?>
                         <?php endfor; ?>
 
-                        <?php if ($pageMonitor == $nombre_page-1): ?>
-			    <a href="technicien_ecran.php?page=<?= $pageMonitor +1?>#tabfixecran" class="next">Suivant</a>
-                            <a href="technicien_ecran.php?page=<?= $nombre_page?>#tabfixeccran" class="page">>></a>
-                        <?php elseif ($pageMonitor != $nombre_page): ?>
-			    <span>...</span>
-			    <a href="technicien_ecran.php?page=<?= $pageMonitor +1 ?>#tabfixecran" class="next">Suivant</a>
-			    <a href="technicien_ecran.php?page=<?= $nombre_page ?>#tabfixecran" class="page">>></a>
-			<?php endif; }?>
+                        <?php if ($pageMonitor < $nombre_page): 
+			    //affiche un bouton Suivant permettant d'aller sur la page suivante?>
+                            <a href="technicien_ecran.php?page=<?= $pageMonitor + 1?>" class="next">Suivant</a>
+                        <?php endif; }?>
                 </nav>
             </div>
         </div>

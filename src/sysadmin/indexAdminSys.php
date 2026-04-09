@@ -5,15 +5,21 @@ include_once("../fragments/headers.html");
 include("../accesDenied.php");
 ?>
 <header>
-        <h1>Administrateur Système</h1>
+	<h1>Administrateur Système</h1>
 </header>
+
 <?php
 include_once("../fragments/menuSys.html");
-
 // connexion au a la base de donnée
 include_once("connexion.php");
 
+?>
 
+<div class="container">
+    <div class="inventaires">
+
+	<h1>Journal d'activité 1</h1>
+<?php
     $sql = "SELECT * FROM log";
     $sqlp = mysqli_prepare($connect, $sql);
 
@@ -28,24 +34,26 @@ include_once("connexion.php");
     }
     $rows = array_reverse($rows);
 
-
-    echo "<div class='log'>";
-        echo "<table>";
-        echo "<thead>";
-        echo "<th>Login</th>";
-        echo "<th>Rôle</th>";
-        echo "<th>Date</th>";
-        echo "</thead>";
-        $i=0;
-        foreach ($rows as $ligne){
-            if ($i >=30){break;}
+	echo "<table>";
+	echo "<thead>";
+	echo "<th>Login</th>";
+	echo "<th>Rôle</th>";
+	echo "<th>Date</th>";
+	echo "</thead>";
+	$i=0;
+	foreach ($rows as $ligne){
+	    if ($i >=30){break;}
             echo "<tr>";
             foreach ($ligne as $value) {
-                echo "<td>" . htmlspecialchars($value) . "</td>";
+            	echo "<td>" . htmlspecialchars($value) . "</td>";
             }
             echo "</tr>";
-            $i++;
-        }
-        echo "</table>";
-echo "</div>";
+	    $i++;
+  	}
+	echo "</table>";
+?>
+    </div>
+</div>
+<?php
 include_once("../fragments/footers.html");
+?>

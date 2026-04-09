@@ -11,7 +11,7 @@ include("../accesDenied.php");
 include("../fragments/menuweb.html");
 ?>
 <div class="tech">
-    <div class="connexion" id="form">
+    <div class="connexion">
         <div class="pageConnexion">
             <div class="container">
                 <div class="inventaires">
@@ -22,8 +22,6 @@ include("../fragments/menuweb.html");
                                 <label for="OS">Nom OS:<br>
                                     <input type="text" id="OS" name="OS"></label><br>
                                 <input type="submit" name="ajouterOS" value="Ajouter">
-			    </form>
-			    <form method="post">
                                 <h2> Ajout du fabriquant</h2>
                                 <label for="fabriquant">Fabricant:<br>
                                     <input type="text" id="fabriquant" name="fabriquant"></label><br>
@@ -55,8 +53,8 @@ if(isset($_POST["fabriquant"])) {
     $FAB = $_POST["fabriquant"];
     $sql = "INSERT INTO fabriquant (nom) VALUES ('$FAB');";
     $sqlp = "INSERT INTO fabriquant (nom) VALUES (?);";
-    $requetes = mysqli_query($connect, $sql);
-    if ($requetes && mysqli_stmt_bind_param($requetes, "s", "$FAB")){
+    $requete = mysqli_query($connect, $sql);
+    if ($requete && mysqli_stmt_bind_param($requete, "s", "$FAB")){
         echo "Nouveau fabriquant enregistré avec succès";
     } else {
         echo "Erreur : " . $sql . "<br>" .mysqli_error($connect);
@@ -67,29 +65,25 @@ if(isset($_POST["fabriquant"])) {
         <div class="pageConnexion">
             <div class="container">
                 <div class="clinventaires">
-                    <h3>Liste des OS</h3>
+                    <h3>Liste des os</h3>
                     <?php
                     $sql = "SELECT nom FROM os;";
                     $result = mysqli_query($connect, $sql);
                     ?>
-                    <table class="en-tete">
+                    <table id="techniciens">
                         <tr>
-                            <th class="col1">Nom</th>
-                            <th class="col2"></th>
+                            <th>Nom</th>
+                            <th></th>
                         </tr>
-		    </table>
-		    <div class="scroll">
-		    <table id="techniciens">
                         <?php
                         while ($ligne= mysqli_fetch_row($result)){
                             echo "<tr>";
-                            echo "<td class='col1'>".$ligne[0]."</td>";
-                            echo "<td class='col2'><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "<td>".$ligne[0]."</td>";
+                            echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
                             echo "</tr>";
                         }
                         ?>
                     </table>
-		    </div>
                 </div>
             </div>
         </div>
@@ -103,24 +97,20 @@ if(isset($_POST["fabriquant"])) {
                     $sql = "SELECT nom FROM fabriquant;";
                     $result = mysqli_query($connect, $sql);
                     ?>
-                    <table class="en-tete">
+                    <table id="techniciens">
                         <tr>
-                            <th class="col1">Nom</th>
-                            <th class="col2"></th>
+                            <th>Nom</th>
+                            <th></th>
                         </tr>
-		    </table>
-		    <div class="scroll">
-		    <table id="techniciens">
                         <?php
                         while ($ligne= mysqli_fetch_row($result)){
                             echo "<tr>";
-                            echo "<td class='col1'>".$ligne[0]."</td>";
-                            echo "<td class='col2'><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "<td>".$ligne[0]."</td>";
+                            echo "<td><input type='button' name='supprimer' value='supprimer'></td>";
                             echo "</tr>";
                         }
                         ?>
                     </table>
-		    </div>
                 </div>
             </div>
         </div>

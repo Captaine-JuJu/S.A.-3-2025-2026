@@ -30,15 +30,15 @@ include("../accesDenied.php");
                             <table role="presentation">
                                 <tr>
                                     <td>
-                                        <label>Nom (Obligatoire):
+                                        <label for="nomUC">Nom (Obligatoire):
                                             <input type="text" name="nomUC" id="nomUC" required></label>
                                     </td>
                                     <td>
-                                        <label>N° Serie (Obligatoire):
+                                        <label for="nSerieUC">N° Serie (Obligatoire):
                                             <input type="text" name="nSerieUC" id="nSerieUC" required></label>
 				                    </td>
                                     <td>
-                                        <label>Fabricant : </label>
+                                        <label for="fabricantUC">Fabricant : 
                                             <select name="fabricantUC" id="fabricantUC">
                                                 <option value=""> Choisissez une option </option>
                                                 <?php
@@ -47,33 +47,34 @@ include("../accesDenied.php");
 						                        }
                                                 ?>
                                             </select>
+					</label>   
                                     </td>
                                     <td>
-                                        <label>Model :
+                                        <label for="modelUC">Model :
                                             <input type="text" name="modelUC" id="modelUC"></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>Type :
+                                        <label for="typeUC">Type :
                                             <input type="text" name="typeUC" id="typeUC"></label>
                                     </td>
                                     <td>
-                                        <label>CPU :
+                                        <label for="CPUUC">CPU :
                                             <input type="text" name="CPUUC" id="CPUUC"></label>
                                     </td>
                                     <td>
-                                        <label>RAM (Go) :
+                                        <label for="RAMUC">RAM (Go) :
                                             <input type="text" name="RAMUC" id="RAMUC"></label>
                                     </td>
                                     <td>
-                                        <label>Stockage (Go) :
+                                        <label for="stockageUC">Stockage (Go) :
                                             <input type="text" name="stockageUC" id="stockageUC"></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>OS : </label>
+                                        <label for="OSUC">OS : 
                                         <select name ="OSUC" id="OSUC">
                                             <option value=""> Choisissez une option </option>
                                             <?php
@@ -82,35 +83,36 @@ include("../accesDenied.php");
 					    }
                                             ?>
                                         </select>
+					</label>
                                     </td>
                                     <td>
-                                        <label>Domaine :
+                                        <label for="domaineUC">Domaine :
                                             <input type="text" name="domaineUC" id="domaineUC"></label>
                                     </td>
                                     <td>
-                                        <label>Localisation :
+                                        <label for="localisationUC">Localisation :
                                             <input type="text" name="localisationUC" id="localisationUC"></label>
                                     </td>
                                     <td>
-                                        <label>Bâtiment :
+                                        <label for="batimentUC">Bâtiment :
                                             <input type="text" name="batimentUC" id="batimentUC"></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>Pièce :
+                                        <label for="pieceUC">Pièce :
                                             <input type="text" name="pieceUC" id="pieceUC"></label>
                                     </td>
                                     <td>
-                                        <label>DDR :
+                                        <label for="DDRUC">DDR :
                                             <input type="text" name="DDRUC" id="DDRUC"></label>
                                     </td>
                                     <td>
-                                        <label>Date d'achat :
+                                        <label for="dateAchatUC">Date d'achat :
                                             <input type="date" name="dateAchatUC" id="dateAchatUC"></label>
                                     </td>
                                     <td>
-                                        <label>Date de fin de garantis :
+                                        <label for="finGarantisUC">Date de fin de garantis :
                                             <input type="date" name="finGarantisUC" id="finGarantisUC"></label>
                                     </td>
                                 </tr>
@@ -129,41 +131,22 @@ include("../accesDenied.php");
                 </div>
 
                 <div class="formulaireImporterExporterFichier">
-                    <div class="exporte">
+                    <div id="exporte">
                         <h3>Exporter fichier des machines</h3>
-                        <label>Exporter :
+                        <label for="exporter">Exporter :
                             <input type="button" value="exporter" name="exporter"></label>
                     </div>
                     <div class="import">
                         <h3>Importer fichier des machines</h3>
 
-                        <label>Importer :
+                        <label for="importer">Importer :
                             <input type="file" value="importer" name="importer"></label>
                     </div>
                 </div>
                 <h3>Inventaire des unites centrales</h3>
-                <form method="POST">
-                    <label for="colonnes">Colonnes:<br>
-                        <select name="colonnes">
-                            <?php
-                            // affiche le nom des colonnes du tableau dans le select
-                            $sql = "DESCRIBE devices;";
-                            $result = mysqli_query($connect, $sql);
-                            $nbr_ligne = 0;
-                            while ($li= mysqli_fetch_row($result)){
-                                // n'affiche que les colonnes pas déja afficher dans le tableau
-                                if($nbr_ligne >= 3) {
-                                    echo "<option value='.$li[0].'>" . $li[0] . "</option>";
-                                }
-                                $nbr_ligne++;
-                            }
-                            ?>
-                        </select>
-                    </label>
-                </form><br>
 
                 <?php
-                $colonne = isset($_POST['colonne']) ? $_POST['colonne'] : 'all';
+                //$colonne = isset($_POST['colonne']) ? $_POST['colonne'] : 'all';
 
 
                 // compte le nombre d'article dans la base de données
@@ -171,19 +154,19 @@ include("../accesDenied.php");
                 $resulttotal = mysqli_query($connect, $totalsql);
                 $total = mysqli_fetch_row($resulttotal)[0];
 
-                $machineParPage = 2;
+                $machineParPage = 26;
                 if($total <= $machineParPage){
                     $nombre_page = 0;
                 }else {
-                    // calcul le nombre de pages nécessaire pour tous afficher
-                    $nombre_page = ceil($total / $machineParPage);
+                 //  calcul le nombre de pages nécessaire pour tous afficher
+                   $nombre_page = ceil($total / $machineParPage);
                 }
                 $pageMonitor = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                 $pageActuelle = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-                // Vérifier que la page est dans les bornes
+               // Vérifier que la page est dans les bornes
                 if ($pageActuelle < 1) {
-                    $pageActuelle = 1;
+                   $pageActuelle = 1;
                 } elseif ($pageActuelle > $total) {
                     $pageActuelle = $total;
                 }
@@ -192,30 +175,23 @@ include("../accesDenied.php");
                 $offset = ($pageActuelle - 1) * $machineParPage;
 
                 //affiche le nombre d'unités centrale dans la base de données
-                $sql = "SELECT * FROM Devices ORDER BY Nom DESC LIMIT ? OFFSET ?";
+                $sql = "SELECT Nom, Num_serie, Fabricant, Model, Type, Domaine, Bâtiment, Pieces, Date_garantis FROM Devices ORDER BY Bâtiment, Nom ASC LIMIT ? OFFSET ?";
                 $sqlp = mysqli_prepare($connect, $sql);
                 mysqli_stmt_bind_param($sqlp, 'ss', $machineParPage, $offset);
                 mysqli_stmt_execute($sqlp);
                 $result = mysqli_stmt_get_result($sqlp);
                 ?>
 
-                <table class="unitéesCentrales">
+                <table class="unitéesCentrales" id="tabfixos">
                     <tr>
                         <th>Nom</th>
                         <th>N° série</th>
                         <th>Fabricant</th>
                         <th>Model</th>
                         <th>Type</th>
-                        <th>CPU</th>
-                        <th>RAM</th>
-                        <th>Stockage</th>
-                        <th>OS</th>
                         <th>Domain</th>
-                        <th>Localisation</th>
                         <th>Bâtiment</th>
                         <th>Pièce</th>
-                        <th>DDR</th>
-                        <th>Date d'achat</th>
                         <th>Date fin garantis</th>
                         <th></th>
                     </tr>
@@ -226,29 +202,56 @@ include("../accesDenied.php");
                         foreach ($ligne as $value){
                             echo "<td>".$value."</td>";
                         }
-                        echo "<td><input type='submit' formmethod='get' formaction='actionsupprime.php' name='supprimer' value='supprimer'></td>";
-                        echo "</tr>";
+                        echo "<td>";
+			echo "<form method='POST' action='actionsupprime.php'>";
+			echo "<input type='hidden' id='nomS' name='nomS' value='".$ligne['Nom']."'>";
+			echo "<input type='hidden' id='idS' name='idS' value='".$ligne['Num_serie']."'>";
+			echo "<button type='submit'>Supprimer</button>";
+			echo "</form>";
+			echo "</td>";
                     }
                     ?>
                 </table>
-
                 <nav class="pagination">
                     <?php
                     if($nombre_page != 0){
-                        if ($pageActuelle > 1): ?>
-                        <a href="technicien_OS.php?page=<?= $pageActuelle - 1 ?>page2=<?=$pageMonitor?>" class="prev">Précédent</a>
-                    <?php endif; ?>
+                        if ($pageActuelle == 1):
+			    $debut = 1;
+			    $fin = $pageActuelle +2;
+			elseif ($pageActuelle == 2): ?>
+			    <a href="technicien_OS.php?page=<?=1?>#tabfixos" class="page"><<</a>
+                            <a href="technicien_OS.php?page=<?= $pageActuelle - 1 ?>#tabfixos" class="prev">Précédent</a>
+                    	<?php
+			    $debut = $pageActuelle -1;
+			    $fin = $pageActuelle +1;
+			else: ?>
+			    <a href="technicien_OS.php?page=<?=1?>#tabfixos" class="page"><<</a>
+			    <a href="technicien_OS.php?page=<?= $pageActuelle -1 ?>#tabfixos" class="prev">Précédent</a>
+			    <span>...</span>
+			<?php
+			    $debut = $pageActuelle -1;
+			    $fin = $pageActuelle +1;
+			endif;
+			if ($pageActuelle == $nombre_page or $pageActuelle == $nombre_page-1):
+			    $debut = $nombre_page -2;
+			    $fin = $nombre_page;
+			endif ?>
 
-                    <?php for ($i = 1; $i <= $nombre_page; $i++): ?>
+                    <?php for ($i = $debut; $i <= $fin; $i++): ?>
                         <?php if ($i == $pageActuelle): ?>
                             <span><strong><?= $i ?></strong></span>
                         <?php else: ?>
-                            <a href="technicien_OS.php?page=<?= $i ?>page2=<?=$pageMonitor?>" class="page"><?= $i ?></a>
+                            <a href="technicien_OS.php?page=<?= $i ?>#tabfixos" class="page"><?= $i ?></a>
                         <?php endif; ?>
                     <?php endfor; ?>
 
-                    <?php if ($pageActuelle < $nombre_page): ?>
-                        <a href="technicien_OS.php?page=<?= $pageActuelle + 1 ?>page2=<?=$pageMonitor?>" class="next">Suivant</a>
+                    <?php if ($pageActuelle == $nombre_page-1): ?>
+                            <a href="technicien_OS.php?page=<?= $pageActuelle + 1 ?>#tabfixos" class="next">Suivant</a>
+			    <a href="technicien_OS.php?page=<?= $nombre_page ?>#tabfixos" class="page">>></a>
+		    <?php elseif ($pageActuelle != $nombre_page):?>
+			    <span>...</span>
+			    <a href="technicien_OS.php?page=<?= $pageActuelle +1 ?>#tabfixos" class="next">Suivant</a>
+			    <a href="technicien_OS.php?page=<?= $nombre_page ?>#tabfixos" class="page">>></a>
                     <?php endif; }?>
                 </nav>
             </div>

@@ -19,13 +19,13 @@ include("../accesDenied.php");
     $resultFab = mysqli_query($connect, $sqlFab);
     $resultOS = mysqli_query($connect, $sqlOS);
     ?>
-    <div class="container">
-        <div class="inventaires">
+    <div id="container">
+        <div id="inventaires">
             <h2>Bienvenue <?php echo $_SESSION['login']?></h2>
-            <div class="technique">
-                <div class="formulaireAjouter">
+            <div id="technique">
+                <div id="formulaireAjouter">
                     <h3>Ajout Unitée Central</h3>
-                    <div class="ajoutUC">
+                    <div id="ajoutUC">
                         <form method="POST" action="actionAjoutUC.php">
                             <table role="presentation">
                                 <tr>
@@ -120,7 +120,7 @@ include("../accesDenied.php");
                     </div>
 
                     <h3>Ajout Ecran</h3>
-                    <div class="ajoutEcran">
+                    <div id="ajoutEcran">
 
                         <form method="POST" action="actionAjoutE.php">
                             <table role="presentation">
@@ -170,13 +170,13 @@ include("../accesDenied.php");
                     </div>
                 </div>
 
-                <div class="formulaireImporterExporterFichier">
-                    <div class="exporte">
+                <div id="formulaireImporterExporterFichier">
+                    <div id="exporte">
                         <h3>Exporter fichier des machines</h3>
                         <label>Exporter :
                             <input type="button" value="exporter" name="exporter"></label>
                     </div>
-                    <div class="import">
+                    <div id="import">
                         <h3>Importer fichier des machines</h3>
 
                         <label>Importer :
@@ -241,7 +241,7 @@ include("../accesDenied.php");
                 $result = mysqli_stmt_get_result($sqlp);
                 ?>
 
-                <table class="unitéesCentrales">
+                <table id="unitéesCentrales">
                     <tr>
                         <th>Nom</th>
                         <th>N° série</th>

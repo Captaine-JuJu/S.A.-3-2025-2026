@@ -1,9 +1,13 @@
 <?php
-print_r($_GET);
-echo $_GET["nom"];
+print_r($_POST);
 include_once("../connexion.php");
-if(isset($_GET["nom"])){
-    $nom = $_GET["nom"];
-    $sql = "DELETE FROM Devices where Nom='$nom';";
-    $result = mysqli_query($connect, $sql);
+if(isset($_POST["nomS"], $_POST["idS"])){
+    $nom = $_POST["nomS"];
+    $num = $_POST["idS"];
+    $sql = "DELETE FROM Devices where Nom='$nom' AND Num_serie='$num';";
+    if (mysqli_query($connect, $sql)) {
+        header("Location: technicien_OS.php?status=succes");
+    } else {
+        echo "Erreur lors de la suppression";
+    }
 }

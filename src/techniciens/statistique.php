@@ -21,6 +21,7 @@ include("../accesDenied.php");
     	    <h3>Unité centrale</h3>
 	    <div class="connexions">
 	   	<label>
+		<div class="stat">
 	        <?php
 
 	         // $sql = "SELECT fabricant, COUNT(*) as nbr FROM Monitors GROUP BY fabricant";
@@ -54,6 +55,10 @@ include("../accesDenied.php");
        		     echo "</tr>";
    		 }
    		 echo "</table>";
+		 ?>
+		 </div>
+		 <div class="stat">
+		 <?php
 
    		 $sql = "SELECT OS, COUNT(*) as nbr FROM Devices GROUP BY OS;";
    		 $result = mysqli_query($connect, $sql);
@@ -73,6 +78,10 @@ include("../accesDenied.php");
 		     echo "</tr>";
    		 }
    		 echo "</table>";
+		 ?>
+		 </div>
+		 <div class="stat">
+		 <?php
 
    		 $sql = "SELECT Localisation, COUNT(*) as nbr FROM Devices GROUP BY Localisation;";
    		 $result = mysqli_query($connect, $sql);
@@ -140,11 +149,13 @@ include("../accesDenied.php");
     		//fclose($fp);
     		?>
 		</label>
+		</div>
    	     </div>
 	</div>
 	<div class="StatistiqueE">
+	    <h3>Ecran</h3>
+	    <div class="stat">
     	    <label>
-    	    <h3>Ecran</h3>
    	    <?php
 	    $totalsql = "SELECT COUNT(*) AS total FROM Monitors;";
 	    $resulttotal = mysqli_query($connect, $totalsql);
@@ -208,12 +219,15 @@ include("../accesDenied.php");
 	    //fclose($fpIM);
 	    ?>
 	    </label>
+	    </div>
 	</div>
 	<div class="StatistiqueC">
+	    <h3>Connexion</h3>
+	    <div class="stat">
 	    <label>
-   	    <h3>Connexion</h3>
+
   	    <?php
-        include_once("../outilsStat.php");
+            include_once("../outilsStat.php");
    	    $fp = fopen("../données/connections.csv", "r");
 
 	    $listConnection = array();
@@ -242,12 +256,13 @@ include("../accesDenied.php");
 
 	    $moy = moyenne($listConnection);
 	    echo "Moyenne de temps de connexion: ".$moy." secondes<br>";
-
+	    echo "<br>";
             $mediane = mediane($listConnection);
 	    echo "Mediane de temps de connexion: ".$mediane." secondes<br>";
 
 	    ?>
 	    </label>
+	    </div>
 	</div>
     </div>
 </div>

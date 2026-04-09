@@ -20,6 +20,7 @@ include("../connexion.php");
             <h2> Statistiques</h2>
             <h3>Unité centrale</h3>
             <div class="connexions">
+		<div class="stat">
                 <label>
                     <?php
 
@@ -47,6 +48,10 @@ include("../connexion.php");
                         echo "</tr>";
                     }
                     echo "</table>";
+		    ?>
+		    </div>
+		    <div class="stat">
+		    <?php
 
                     $sql = "SELECT OS, COUNT(*) as nbr FROM Devices GROUP BY OS;";
                     $result = mysqli_query($connect, $sql);
@@ -66,6 +71,10 @@ include("../connexion.php");
                         echo "</tr>";
                     }
                     echo "</table>";
+		    ?>
+		    </div>
+		    <div class="stat">
+		    <?php
 
                     $sql = "SELECT Localisation, COUNT(*) as nbr FROM Devices GROUP BY Localisation;";
                     $result = mysqli_query($connect, $sql);
@@ -87,11 +96,13 @@ include("../connexion.php");
                     echo "</table>";
                     ?>
                 </label>
+		</div>
             </div>
         </div>
         <div class="StatistiqueE">
             <label>
                 <h3>Ecran</h3>
+		<div class="stat">
                 <?php
                 $totalsql = "SELECT COUNT(*) AS total FROM Monitors;";
                 $resulttotal = mysqli_query($connect, $totalsql);
@@ -119,13 +130,15 @@ include("../connexion.php");
                 echo "</table>";
                 ?>
             </label>
+	    </div>
         </div>
         <div class="StatistiqueC">
             <label>
                 <h3>Connexion</h3>
+		<div class="stat">
                 <?php
-                include_once("STAT/outilsStat.php");
-                $fp = fopen("données/connections.csv", "r");
+                include_once("../outilsStat.php");
+                $fp = fopen("../données/connections.csv", "r");
 
                 $listConnection = array();
                 $listUtilisateur = array();
@@ -159,6 +172,7 @@ include("../connexion.php");
 
                 ?>
             </label>
+	    </div>
         </div>
     </div>
 </div>
