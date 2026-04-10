@@ -266,3 +266,57 @@ label{
     width:50%;
     text-align: center;
 }
+
+.ssh-table {
+    table-layout: fixed;
+    width: 90%;
+}
+
+
+.ssh-table th {
+    padding: 15px 10px;
+    font-size: 16px;
+}
+
+.ssh-table td {
+    padding: 12px 20px;
+    font-size: 14px;
+
+}
+
+.fusion-badge {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 2px;
+}
+
+.event-name {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.method-name {
+    font-size: 12px;
+    background: #455a64;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.row-admin { background-color: #eaf9d8; }
+.row-success { background-color: #eaeee7; } 
+.row-danger  { background-color: #ffebee; } 
+.row-closed  { background-color: #ffffff; } 
+
+.col-date { font-size: 14px !important; white-space: nowrap; width: 25%;}
+.col-ip   { font-family: monospace; font-weight: bold; color: #00796b; width:30%; }
+.col-user { color: #2c3e50; width:30%;}
+.col-port { font-size: 12px; width:15%; }
+
+
+.ssh-table tr:hover td {
+    background-color: #d3e2ec;
+    transition: 0.2s;
+}

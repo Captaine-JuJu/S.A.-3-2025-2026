@@ -71,6 +71,14 @@ include("../connexion.php");
                         ?>
                     </table>
 		    </div>
+		    <?php
+		    if (isset($_GET['suppression_impossible']))
+                        echo "Vous ne pouvez pas supprimer cet utilisateur !";
+           	    else if (isset($_GET['suppression_reussie']))
+               	        echo "Suppression réussie !";
+		    else if (isset($_GET['suppression_erreur']))
+                        echo "Erreur de suppression !";
+		    ?>
                 </div>
             </div>
         </div>

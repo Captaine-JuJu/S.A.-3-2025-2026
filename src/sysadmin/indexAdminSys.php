@@ -4,56 +4,63 @@ authentification("ADMIN_SYS");
 include_once("../fragments/headers.html");
 include("../accesDenied.php");
 ?>
-<header>
-	<h1>Administrateur Système</h1>
-</header>
+    <header>
+        <h1>Administrateur Système</h1>
+    </header>
 
 <?php
 include_once("../fragments/menuSys.html");
-// connexion au a la base de donnée
-include_once("connexion.php");
-
 ?>
 
-<div class="container">
-    <div class="inventaires">
+    <div class="container">
+        <div class="inventaires">
 
-	<h1>Journal d'activité 1</h1>
-<?php
-    $sql = "SELECT * FROM log";
-    $sqlp = mysqli_prepare($connect, $sql);
+            <h1>Journal d'activité 1</h1>
+            <?php
+            $contenu = file_get_contents('../données/logReussi.json');
+            $listeA = json_decode($contenu, true);
 
-    mysqli_stmt_execute($sqlp);
-
-    $result = mysqli_stmt_get_result($sqlp);
-
-
-    $rows = [];
-    while ($ligne = mysqli_fetch_row($result)) {
-        $rows[] = $ligne;
-    }
-    $rows = array_reverse($rows);
-
-	echo "<table>";
-	echo "<thead>";
-	echo "<th>Login</th>";
-	echo "<th>Rôle</th>";
-	echo "<th>Date</th>";
-	echo "</thead>";
-	$i=0;
-	foreach ($rows as $ligne){
-	    if ($i >=30){break;}
-            echo "<tr>";
-            foreach ($ligne as $value) {
-            	echo "<td>" . htmlspecialchars($value) . "</td>";
+            if (is_array($listeA)) {
+                $liste = array_reverse($listeA);
             }
-            echo "</tr>";
-	    $i++;
-  	}
-	echo "</table>";
+            ?>
+
+    	    <table class="ssh-table">
+            <thead>
+	    <tr>
+            	<th>Login</th>
+            	<th>Rôle</th>
+            	<th>Date</th>
+	    </tr>
+            </thead>
+	    <tbody>
+	    <?php
+            $i=0;
+            foreach ($liste as $ligne){
+                if ($i >=30){break;}
+            	$role = $ligne['role'] ?? '';
+            	$rowClass = "row-closed";
+
+            	if ($role === "ADMIN_SYS") {
+                    $rowClass = "row-success";
+            	} elseif ($role === "ADMIN_WEB") {
+                    $rowClass = "row-admin";
+            	} elseif ($role === "Techniciens") {
+                    $rowClass = "row-closed";
+            	}
+
+            	echo "<tr class='$rowClass'>";
+            	echo "<td class='col-user'><strong>" .$ligne['login']. "</strong></td>";
+            	echo "<td class='col-user'>".$role."</td>";
+            	echo "<td class='col-date'>" .$ligne['date']. "</td>";
+            	echo "</tr>";
+
+            	$i++;
+	    	}
 ?>
+		<tbody>
+            </table>
+        </div>
     </div>
-</div>
 <?php
 include_once("../fragments/footers.html");
-?>

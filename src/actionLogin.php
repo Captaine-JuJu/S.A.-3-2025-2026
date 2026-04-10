@@ -41,30 +41,30 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
             if (mysqli_stmt_execute($sqlog)) {
                 echo "Insertion réussie!";
             } else {
-                    $ficherLogEchec = file_get_contents('../données/logEchec.json');
+                    $ficherLogEchec = file_get_contents('données/logEchec.json');
                     $listeRate = json_decode($ficherLogEchec, true);
                     $rate = array('login' =>$login,'motif'=>'Erreur lors de recuperation de donnée','date' => $date);
                     $listeRate[] = $rate;
-                    file_put_contents('../données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    file_put_contents('données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                     echo "Erreur lors de l'insertion.";
             }
             mysqli_stmt_close($sqlog);
         } else {
-                $ficherLogEchec = file_get_contents('../données/logEchec.json');
+                $ficherLogEchec = file_get_contents('données/logEchec.json');
                 $listeRate = json_decode($ficherLogEchec, true);
                 $rate = array('login' =>$login,'motif'=>'Erreur de préparation de la requête sql','date' => $date);
                 $listeRate[] = $rate;
-                file_put_contents('../données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                file_put_contents('données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                 echo "Erreur de préparation de la requête.";
         }
 
             mysqli_close($connect);
 
-            $ficherLogCoR = file_get_contents('../données/logReussi.json');
+            $ficherLogCoR = file_get_contents('données/logReussi.json');
             $listeOk = json_decode($ficherLogCoR, true);
             $ok = array('login' =>$login,'role'=>$role,'date' => $date);
             $listeOk[] = $ok;
-            file_put_contents('../données/logReussi.json', json_encode($listeOk, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents('données/logReussi.json', json_encode($listeOk, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
             switch ($role) {
                 case "Techniciens":
@@ -79,12 +79,12 @@ if (isset($_POST["login"], $_POST["mdp"], $_POST["Connexion"])) {
             }
         exit();
     } else {
-        $ficherLogEchec = file_get_contents('../données/logEchec.json');
+        $ficherLogEchec = file_get_contents('données/logEchec.json');
         $listeRate = json_decode($ficherLogEchec, true);
         $rate = array('login' =>$login,'motif'=>'Erreur mot de mot de passe ou identifiant','date' => $date);
         $listeRate[] = $rate;
-        file_put_contents('../données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        
+        file_put_contents('données/logEchec.json', json_encode($listeRate, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
     }
 
 }

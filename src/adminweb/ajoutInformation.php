@@ -84,7 +84,12 @@ if(isset($_POST["fabriquant"])) {
                         while ($ligne= mysqli_fetch_row($result)){
                             echo "<tr>";
                             echo "<td class='col1'>".$ligne[0]."</td>";
-                            echo "<td class='col2'><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "<td class='col2'>";
+			    echo "<form method='POST' action='supprimerOS.php'>";
+			    echo "<input type='hidden' id='nomOS' name='nomOS' value='".$ligne[0]."'>";
+			    echo "<button type='submit'> Supprimer </button>";
+			    echo "</form>";
+		 	    echo "</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -115,7 +120,13 @@ if(isset($_POST["fabriquant"])) {
                         while ($ligne= mysqli_fetch_row($result)){
                             echo "<tr>";
                             echo "<td class='col1'>".$ligne[0]."</td>";
-                            echo "<td class='col2'><input type='button' name='supprimer' value='supprimer'></td>";
+                            echo "<td class='col2'>";
+			    echo "<td class='col2'>";
+                            echo "<form method='POST' action='supprimerFab.php'>";
+                            echo "<input type='hidden' id='nomFab' name='nomFab' value='".$ligne[0]."'>";
+                            echo "<button type='submit'> Supprimer </button>";
+                            echo "</form>";
+                            echo "</td>";
                             echo "</tr>";
                         }
                         ?>

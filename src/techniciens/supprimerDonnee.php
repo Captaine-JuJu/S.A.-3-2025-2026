@@ -1,12 +1,25 @@
 <?php
-print_r($_POST);
 include_once("../connexion.php");
-if(isset($_POST["numS"])){
+
+if (isset($_POST["numS"])) {
     $num = $_POST["numS"];
-    $sql = "DELETE FROM Devices where num_serie='$num';";
-    if (mysqli_query($connect, $sql)) {
-        header("Location: technicien_ecran.php?status=succes");
+
+    $stmt = mysqli_prepare($connect, "DELETE FROM Monitors WHERE num_serie = ?");
+
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $num);
+      
+        if (mysqli_stmt_execute($stmt)) {
+            header("Location: technicien_ecran.php?status=succes");
+        } else {
+            header("Location: technicien_ecran.php?status=erreur_sql");
+        }
+        
+        mysqli_stmt_close($stmt);
     } else {
-        echo "Erreur lors de la suppression";
+        header("Location: technicien_ecran.php?status=erreur_prep");
     }
+} else {
+    header("Location: technicien_ecran.php");
 }
+exit();

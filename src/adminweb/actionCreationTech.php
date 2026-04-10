@@ -1,4 +1,4 @@
-<?php
+x<?php
 // connexion a la base de donnée
 include("../connexion.php");
 

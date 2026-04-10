@@ -5,7 +5,7 @@ if (isset($_POST["login"])) {
     $login = $_POST["login"];
 
     if ($login == "tech1") {
-        echo "Attention !! Cet utilisateur ne peut pas être supprimé !";
+        header("Location: ajoutTech.php?suppression_impossible");
         exit();
     }
 
@@ -15,10 +15,11 @@ if (isset($_POST["login"])) {
         mysqli_stmt_bind_param($stmt, "s", $login);
         
         if (mysqli_stmt_execute($stmt)) {
-            header("Location: ajoutTech.php?status=succes");
+            header("Location: ajoutTech.php?suppression_reussie");
             exit(); 
         } else {
-            echo "Erreur lors de la suppression : ";
+            header("Location: ajoutTech.php?suppression_erreur");
+	    exit();
         }
         mysqli_stmt_close($stmt);
     }
